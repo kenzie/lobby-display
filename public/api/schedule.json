@@ -1,0 +1,365 @@
+{
+  "updated_at": "2025-09-07T12:00:00Z",
+  "team": "Cape Breton West Islanders",
+  "team_abbreviation": "CB",
+  "league": "Nova Scotia U18 Major Hockey League",
+  "games_count": 16,
+  "home_venue": "Al MacInnis Sports Centre",
+  "games": [
+    {
+      "id": 3419676,
+      "date": "2025-08-23",
+      "time": "02:00PM",
+      "date_formatted": "Sat, Aug 23",
+      "islanders_home": false,
+      "opponent": {
+        "name": "Weeks",
+        "abbreviation": "WKS",
+        "full_name": "Weeks"
+      },
+      "venue": {
+        "name": "Pictou County Wellness Centre (Main)",
+        "google_maps": "https://goo.gl/maps/3BmCV2GCQjKBaspi8"
+      },
+      "game_type": "E",
+      "status": "F",
+      "score": {
+        "islanders": 3,
+        "opponent": 2,
+        "home": 2,
+        "away": 3
+      },
+      "raw_game_number": 3
+    },
+    {
+      "id": 3419675,
+      "date": "2025-08-23",
+      "time": "11:00AM",
+      "date_formatted": "Sat, Aug 23",
+      "islanders_home": false,
+      "opponent": {
+        "name": "Weeks",
+        "abbreviation": "WKS",
+        "full_name": "Weeks"
+      },
+      "venue": {
+        "name": "Pictou County Wellness Centre (Main)",
+        "google_maps": "https://goo.gl/maps/3BmCV2GCQjKBaspi8"
+      },
+      "game_type": "E",
+      "status": "F",
+      "score": {
+        "islanders": 3,
+        "opponent": 4,
+        "home": 4,
+        "away": 3
+      },
+      "raw_game_number": 1
+    },
+    {
+      "id": 3419679,
+      "date": "2025-08-24",
+      "time": "01:00PM",
+      "date_formatted": "Sun, Aug 24",
+      "islanders_home": true,
+      "opponent": {
+        "name": "Weeks",
+        "abbreviation": "WKS",
+        "full_name": "Weeks"
+      },
+      "venue": {
+        "name": "Keating Millennium Centre",
+        "google_maps": "https://maps.app.goo.gl/dj5Zsrv6WRZk6XVMA"
+      },
+      "game_type": "E",
+      "status": "F",
+      "score": {
+        "islanders": 4,
+        "opponent": 12,
+        "home": 4,
+        "away": 12
+      },
+      "raw_game_number": 7
+    },
+    {
+      "id": 3419678,
+      "date": "2025-08-24",
+      "time": "10:00AM",
+      "date_formatted": "Sun, Aug 24",
+      "islanders_home": true,
+      "opponent": {
+        "name": "Weeks",
+        "abbreviation": "WKS",
+        "full_name": "Weeks"
+      },
+      "venue": {
+        "name": "Keating Millennium Centre",
+        "google_maps": "https://maps.app.goo.gl/dj5Zsrv6WRZk6XVMA"
+      },
+      "game_type": "E",
+      "status": "F",
+      "score": {
+        "islanders": 0,
+        "opponent": 3,
+        "home": 0,
+        "away": 3
+      },
+      "raw_game_number": 6
+    },
+    {
+      "id": 3420473,
+      "date": "2025-08-30",
+      "time": "01:00PM",
+      "date_formatted": "Sat, Aug 30",
+      "islanders_home": false,
+      "opponent": {
+        "name": "Rush",
+        "abbreviation": "SYD",
+        "full_name": "Rush"
+      },
+      "venue": {
+        "name": "Membertou S&W Centre  (BMO Arena)",
+        "google_maps": "https://goo.gl/maps/M5BErbqfVkD3xGVZ7"
+      },
+      "game_type": "E",
+      "status": "F",
+      "score": {
+        "islanders": 3,
+        "opponent": 1,
+        "home": 1,
+        "away": 3
+      },
+      "raw_game_number": 15
+    },
+    {
+      "id": 3419659,
+      "date": "2025-08-31",
+      "time": "01:00PM",
+      "date_formatted": "Sun, Aug 31",
+      "islanders_home": true,
+      "opponent": {
+        "name": "Rush",
+        "abbreviation": "SYD",
+        "full_name": "Rush"
+      },
+      "venue": {
+        "name": "Keating Millennium Centre",
+        "google_maps": "https://maps.app.goo.gl/dj5Zsrv6WRZk6XVMA"
+      },
+      "game_type": "E",
+      "status": "F",
+      "score": {
+        "islanders": 3,
+        "opponent": 2,
+        "home": 3,
+        "away": 2
+      },
+      "raw_game_number": 18
+    },
+    {
+      "id": 3420487,
+      "date": "2025-09-06",
+      "time": "03:00PM",
+      "date_formatted": "Sat, Sep 6",
+      "islanders_home": false,
+      "opponent": {
+        "name": "Rush",
+        "abbreviation": "SYD",
+        "full_name": "Rush"
+      },
+      "venue": {
+        "name": "Membertou S&W Centre (Emera Arena)",
+        "google_maps": "https://goo.gl/maps/Kv9mprX1tZZSifJXA"
+      },
+      "game_type": "E",
+      "status": "F",
+      "score": {
+        "islanders": 7,
+        "opponent": 3,
+        "home": 3,
+        "away": 7
+      },
+      "raw_game_number": 22
+    },
+    {
+      "id": 3419662,
+      "date": "2025-09-07",
+      "time": "02:30PM",
+      "date_formatted": "Sun, Sep 7",
+      "islanders_home": true,
+      "opponent": {
+        "name": "Rush",
+        "abbreviation": "SYD",
+        "full_name": "Rush"
+      },
+      "venue": {
+        "name": "Port Hawkesbury Civic Center",
+        "google_maps": "https://goo.gl/maps/5QHBVLQmDdChotvKA"
+      },
+      "game_type": "E",
+      "status": "X",
+      "score": null,
+      "raw_game_number": 24
+    },
+    {
+      "id": 3420214,
+      "date": "2025-09-13",
+      "time": "03:00PM",
+      "date_formatted": "Sat, Sep 13",
+      "islanders_home": false,
+      "opponent": {
+        "name": "Wildcats",
+        "abbreviation": "KVW",
+        "full_name": "Wildcats"
+      },
+      "venue": {
+        "name": "Kings Mutual Century Center",
+        "google_maps": "https://goo.gl/maps/n1h7vKFAq8DRADJf9"
+      },
+      "game_type": "R",
+      "status": null,
+      "score": null,
+      "raw_game_number": 1
+    },
+    {
+      "id": 3420219,
+      "date": "2025-09-14",
+      "time": "12:00PM",
+      "date_formatted": "Sun, Sep 14",
+      "islanders_home": false,
+      "opponent": {
+        "name": "Wildcats",
+        "abbreviation": "KVW",
+        "full_name": "Wildcats"
+      },
+      "venue": {
+        "name": "Kings Mutual Century Center",
+        "google_maps": "https://goo.gl/maps/n1h7vKFAq8DRADJf9"
+      },
+      "game_type": "R",
+      "status": null,
+      "score": null,
+      "raw_game_number": 6
+    },
+    {
+      "id": 3420224,
+      "date": "2025-09-20",
+      "time": "06:00PM",
+      "date_formatted": "Sat, Sep 20",
+      "islanders_home": true,
+      "opponent": {
+        "name": "Macs",
+        "abbreviation": "HFX",
+        "full_name": "Macs"
+      },
+      "venue": {
+        "name": "Al MacInnis Sports Centre",
+        "google_maps": "https://goo.gl/maps/kmBUtEmnhTkEdEmf9"
+      },
+      "game_type": "R",
+      "status": null,
+      "score": null,
+      "raw_game_number": 11
+    },
+    {
+      "id": 3420228,
+      "date": "2025-09-21",
+      "time": "01:00PM",
+      "date_formatted": "Sun, Sep 21",
+      "islanders_home": true,
+      "opponent": {
+        "name": "Macs",
+        "abbreviation": "HFX",
+        "full_name": "Macs"
+      },
+      "venue": {
+        "name": "Al MacInnis Sports Centre",
+        "google_maps": "https://goo.gl/maps/kmBUtEmnhTkEdEmf9"
+      },
+      "game_type": "R",
+      "status": null,
+      "score": null,
+      "raw_game_number": 15
+    },
+    {
+      "id": 3420233,
+      "date": "2025-09-27",
+      "time": "07:00PM",
+      "date_formatted": "Sat, Sep 27",
+      "islanders_home": false,
+      "opponent": {
+        "name": "Hunters",
+        "abbreviation": "HUN",
+        "full_name": "Hunters"
+      },
+      "venue": {
+        "name": "Cole Harbour Place (1)",
+        "google_maps": "https://goo.gl/maps/Wgq8unB4sBQWEyBz9"
+      },
+      "game_type": "R",
+      "status": null,
+      "score": null,
+      "raw_game_number": 20
+    },
+    {
+      "id": 3420238,
+      "date": "2025-09-28",
+      "time": "03:30PM",
+      "date_formatted": "Sun, Sep 28",
+      "islanders_home": false,
+      "opponent": {
+        "name": "Macs",
+        "abbreviation": "HFX",
+        "full_name": "Macs"
+      },
+      "venue": {
+        "name": "Halifax Forum",
+        "google_maps": "https://goo.gl/maps/v6wi7u1nK8rJarXD8"
+      },
+      "game_type": "R",
+      "status": null,
+      "score": null,
+      "raw_game_number": 25
+    },
+    {
+      "id": 3420242,
+      "date": "2025-10-04",
+      "time": "06:00PM",
+      "date_formatted": "Sat, Oct 4",
+      "islanders_home": true,
+      "opponent": {
+        "name": "Hunters",
+        "abbreviation": "HUN",
+        "full_name": "Hunters"
+      },
+      "venue": {
+        "name": "Al MacInnis Sports Centre",
+        "google_maps": "https://goo.gl/maps/kmBUtEmnhTkEdEmf9"
+      },
+      "game_type": "R",
+      "status": null,
+      "score": null,
+      "raw_game_number": 29
+    },
+    {
+      "id": 3420246,
+      "date": "2025-10-05",
+      "time": "01:00PM",
+      "date_formatted": "Sun, Oct 5",
+      "islanders_home": true,
+      "opponent": {
+        "name": "Hunters",
+        "abbreviation": "HUN",
+        "full_name": "Hunters"
+      },
+      "venue": {
+        "name": "Al MacInnis Sports Centre",
+        "google_maps": "https://goo.gl/maps/kmBUtEmnhTkEdEmf9"
+      },
+      "game_type": "R",
+      "status": null,
+      "score": null,
+      "raw_game_number": 33
+    }
+  ]
+}
