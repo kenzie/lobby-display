@@ -15,7 +15,6 @@
           v-for="block in column.blocks"
           :key="block.id"
           :block="block"
-          class="flex-1"
         />
       </div>
     </div>
