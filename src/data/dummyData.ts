@@ -3,26 +3,26 @@ export const dummyData = {
     small: {
       size: 'small',
       nextGame: {
-        opponent: 'Rangers',
-        time: '7:30 PM'
+        opponent: 'Truro Bearcats',
+        time: '7:00 PM'
       }
     },
     medium: {
       size: 'medium',
       upcomingGames: [
-        { id: 1, date: 'Mar 15', opponent: 'Rangers', time: '7:30 PM' },
-        { id: 2, date: 'Mar 18', opponent: 'Bruins', time: '8:00 PM' },
-        { id: 3, date: 'Mar 22', opponent: 'Leafs', time: '7:00 PM' }
+        { id: 1, date: 'Jan 15', opponent: 'Truro Bearcats', time: '7:00 PM' },
+        { id: 2, date: 'Jan 18', opponent: 'Halifax McDonalds', time: '7:30 PM' },
+        { id: 3, date: 'Jan 22', opponent: 'Dartmouth Whalers', time: '2:00 PM' }
       ]
     },
     large: {
       size: 'large',
       upcomingGames: [
-        { id: 1, date: 'Mar 15', opponent: 'Rangers', time: '7:30 PM' },
-        { id: 2, date: 'Mar 18', opponent: 'Bruins', time: '8:00 PM' },
-        { id: 3, date: 'Mar 22', opponent: 'Leafs', time: '7:00 PM' },
-        { id: 4, date: 'Mar 25', opponent: 'Flyers', time: '7:30 PM' },
-        { id: 5, date: 'Mar 28', opponent: 'Capitals', time: '8:00 PM' }
+        { id: 1, date: 'Jan 15', opponent: 'Truro Bearcats', time: '7:00 PM' },
+        { id: 2, date: 'Jan 18', opponent: 'Halifax McDonalds', time: '7:30 PM' },
+        { id: 3, date: 'Jan 22', opponent: 'Dartmouth Whalers', time: '2:00 PM' },
+        { id: 4, date: 'Jan 25', opponent: 'Valley Wildcats', time: '7:00 PM' },
+        { id: 5, date: 'Jan 28', opponent: 'South Shore Lumberjacks', time: '2:00 PM' }
       ]
     }
   },
@@ -31,26 +31,26 @@ export const dummyData = {
     small: {
       size: 'small',
       lastGame: {
-        result: 'W 4-2',
-        opponent: 'Devils'
+        result: 'W 5-2',
+        opponent: 'Yarmouth Mariners'
       }
     },
     medium: {
       size: 'medium',
       recentGames: [
-        { id: 1, date: 'Mar 12', result: 'W 4-2', opponent: 'Devils' },
-        { id: 2, date: 'Mar 10', result: 'L 1-3', opponent: 'Penguins' },
-        { id: 3, date: 'Mar 8', result: 'W 3-1', opponent: 'Islanders' }
+        { id: 1, date: 'Jan 12', result: 'W 5-2', opponent: 'Yarmouth Mariners' },
+        { id: 2, date: 'Jan 10', result: 'L 2-4', opponent: 'Halifax McDonalds' },
+        { id: 3, date: 'Jan 8', result: 'W 3-1', opponent: 'Valley Wildcats' }
       ]
     },
     large: {
       size: 'large',
       recentGames: [
-        { id: 1, date: 'Mar 12', result: 'W 4-2', opponent: 'Devils' },
-        { id: 2, date: 'Mar 10', result: 'L 1-3', opponent: 'Penguins' },
-        { id: 3, date: 'Mar 8', result: 'W 3-1', opponent: 'Islanders' },
-        { id: 4, date: 'Mar 5', result: 'W 5-2', opponent: 'Sabres' },
-        { id: 5, date: 'Mar 3', result: 'L 2-4', opponent: 'Lightning' }
+        { id: 1, date: 'Jan 12', result: 'W 5-2', opponent: 'Yarmouth Mariners' },
+        { id: 2, date: 'Jan 10', result: 'L 2-4', opponent: 'Halifax McDonalds' },
+        { id: 3, date: 'Jan 8', result: 'W 3-1', opponent: 'Valley Wildcats' },
+        { id: 4, date: 'Jan 5', result: 'W 4-1', opponent: 'South Shore Lumberjacks' },
+        { id: 5, date: 'Jan 3', result: 'L 1-3', opponent: 'Truro Bearcats' }
       ]
     }
   },
@@ -58,28 +58,29 @@ export const dummyData = {
   standings: {
     small: {
       size: 'small',
-      position: '3rd',
-      points: 85
+      position: '2nd',
+      points: 42
     },
     medium: {
       size: 'medium',
       standings: [
-        { name: 'Panthers', points: 95 },
-        { name: 'Rangers', points: 88 },
-        { name: 'Our Team', points: 85 },
-        { name: 'Devils', points: 82 },
-        { name: 'Penguins', points: 78 }
+        { name: 'Halifax McDonalds', points: 45 },
+        { name: 'Cape Breton West', points: 42 },
+        { name: 'Truro Bearcats', points: 38 },
+        { name: 'Dartmouth Whalers', points: 35 },
+        { name: 'Valley Wildcats', points: 32 }
       ]
     },
     large: {
       size: 'large',
       standings: [
-        { name: 'Panthers', wins: 45, losses: 25, otl: 12, points: 95 },
-        { name: 'Rangers', wins: 42, losses: 28, otl: 12, points: 88 },
-        { name: 'Our Team', wins: 40, losses: 30, otl: 12, points: 85 },
-        { name: 'Devils', wins: 38, losses: 32, otl: 12, points: 82 },
-        { name: 'Penguins', wins: 35, losses: 35, otl: 12, points: 78 },
-        { name: 'Sabres', wins: 32, losses: 38, otl: 12, points: 72 }
+        { name: 'Halifax McDonalds', wins: 22, losses: 8, otl: 4, points: 45 },
+        { name: 'Cape Breton West', wins: 20, losses: 10, otl: 4, points: 42 },
+        { name: 'Truro Bearcats', wins: 18, losses: 12, otl: 4, points: 38 },
+        { name: 'Dartmouth Whalers', wins: 16, losses: 14, otl: 4, points: 35 },
+        { name: 'Valley Wildcats', wins: 15, losses: 15, otl: 4, points: 32 },
+        { name: 'South Shore Lumberjacks', wins: 12, losses: 18, otl: 4, points: 26 },
+        { name: 'Yarmouth Mariners', wins: 10, losses: 20, otl: 4, points: 22 }
       ]
     }
   },
@@ -88,26 +89,26 @@ export const dummyData = {
     small: {
       size: 'small',
       topScorer: {
-        name: 'Connor McDavid',
-        points: 85
+        name: 'Jake MacDonald',
+        points: 38
       }
     },
     medium: {
       size: 'medium',
       leaders: {
-        goals: { name: 'Alex Ovechkin', value: 42 },
-        assists: { name: 'Connor McDavid', value: 58 },
-        points: { name: 'Connor McDavid', value: 85 }
+        goals: { name: 'Liam Campbell', value: 18 },
+        assists: { name: 'Jake MacDonald', value: 25 },
+        points: { name: 'Jake MacDonald', value: 38 }
       }
     },
     large: {
       size: 'large',
       players: [
-        { name: 'Connor McDavid', goals: 27, assists: 58, points: 85 },
-        { name: 'Leon Draisaitl', goals: 35, assists: 40, points: 75 },
-        { name: 'Nathan MacKinnon', goals: 30, assists: 42, points: 72 },
-        { name: 'Mikko Rantanen', goals: 28, assists: 44, points: 72 },
-        { name: 'David Pastrnak', goals: 38, assists: 32, points: 70 }
+        { name: 'Jake MacDonald', goals: 13, assists: 25, points: 38 },
+        { name: 'Liam Campbell', goals: 18, assists: 15, points: 33 },
+        { name: 'Noah MacLeod', goals: 12, assists: 18, points: 30 },
+        { name: 'Carter Smith', goals: 14, assists: 12, points: 26 },
+        { name: 'Owen MacKenzie', goals: 9, assists: 16, points: 25 }
       ]
     }
   },
@@ -115,12 +116,12 @@ export const dummyData = {
   news: {
     small: {
       size: 'small',
-      headline: 'Team Signs New Forward'
+      headline: 'Cape Breton West Moves to 2nd Place'
     },
     medium: {
       size: 'medium',
-      headline: 'Team Signs New Forward',
-      summary: 'The organization announced today the signing of a promising young forward to a two-year deal.'
+      headline: 'Cape Breton West Moves to 2nd Place',
+      summary: 'With their recent win over Yarmouth, Cape Breton West has moved into second place in the NS U18MHL standings.'
     },
     large: {
       size: 'large',

@@ -2,7 +2,7 @@
 
 ## Overview
 Vue.js app for displaying hockey team content on an 85" TV via Chromium kiosk mode.
-First implementation: **Nova Scotia U18 Major Hockey League Islanders** (https://islanders.nsu18mhl.ca/)
+First implementation: **Cape Breton West** (Nova Scotia U18 Major Hockey League)
 
 ## Current Status - COMPLETED ✅
 - ✅ Vue.js project with Vite and TypeScript
@@ -46,8 +46,17 @@ First implementation: **Nova Scotia U18 Major Hockey League Islanders** (https:/
 - **Data**: Dummy data structure ready for real API integration
 - **Content Logic**: Prevents duplicate content types on screen
 
+## Usage Commands
+```bash
+npm run dev      # Development server (5s animation intervals)
+npm run build    # Build for production
+npm run preview  # Preview built app
+npm run kiosk    # Launch in fullscreen kiosk mode
+```
+
 ## Next Steps
-- Replace dummy data with real Islanders team data
-- Implement daily data caching system
+- Replace dummy data with real Cape Breton West team data
+- Implement daily data caching system  
 - Add content priority weighting system
-- Deploy for kiosk environment testing 
+- Deploy for kiosk environment testing
+- Change animation interval to 30 seconds for production 
