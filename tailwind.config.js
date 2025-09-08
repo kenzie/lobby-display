@@ -7,7 +7,7 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        sans: ['CaskaydiaCove Nerd Font Mono', 'CaskaydiaCove NFM', 'CaskaydiaCove Nerd Font', 'CaskaydiaCove NF', 'monospace'],
+        sans: ['Inter', 'system-ui', 'sans-serif'],
         mono: ['CaskaydiaCove Nerd Font Mono', 'CaskaydiaCove NFM', 'monospace'],
       },
     },

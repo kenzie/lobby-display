@@ -6,7 +6,7 @@ body {
   margin: 0;
   padding: 0;
   overflow: hidden;
-  font-family: "CaskaydiaCove Nerd Font Mono", "CaskaydiaCove NFM", "CaskaydiaCove Nerd Font", "CaskaydiaCove NF", monospace;
+  font-family: "Inter", system-ui, -apple-system, sans-serif;
 }
 
 #app {
