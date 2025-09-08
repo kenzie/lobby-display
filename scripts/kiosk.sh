@@ -15,17 +15,28 @@ done
 
 echo "Server is ready! Launching kiosk..."
 
+# Create temporary user data directory
+USER_DATA_DIR=$(mktemp -d)
+
 # Launch chromium in kiosk mode
 chromium \
   --kiosk \
   --no-sandbox \
   --disable-web-security \
+  --user-data-dir="$USER_DATA_DIR" \
   --disable-features=VizDisplayCompositor \
   --start-fullscreen \
   --disable-infobars \
   --disable-session-crashed-bubble \
   --disable-restore-session-state \
+  --no-first-run \
+  --disable-background-timer-throttling \
+  --disable-backgrounding-occluded-windows \
+  --disable-renderer-backgrounding \
   http://localhost:4173
+
+# Clean up user data directory
+rm -rf "$USER_DATA_DIR"
 
 # Clean up: kill the preview server when chromium exits
 echo "Kiosk closed. Stopping preview server..."
