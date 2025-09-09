@@ -2,25 +2,15 @@
 
 ## Overview
 Vue.js app for displaying hockey team content on an 85" TV via Chromium kiosk mode.
-First implementation: **Cape Breton West** (Nova Scotia U18 Major Hockey League)
-
-## Current Status - COMPLETED ✅
-- ✅ Vue.js project with Vite and TypeScript
-- ✅ Tailwind CSS for styling  
-- ✅ 3-column sliding layout with continuous animation
-- ✅ Dark theme with light borders/text
-- ✅ Content blocks with 3 height options (1, 2, 3 rows)
-- ✅ 10 content types implemented
-- ✅ Random content generation system
-- ✅ Development borders for visibility
+First implementation: **Cape Breton West Islanders** (Nova Scotia U18 Major Hockey League)
 
 ## Architecture
 
 ### Layout
-- 3 equal columns visible at once
+- 3 equal columns visible on screen at once
 - Each column = 3 rows total height
-- Continuous sliding animation (5s dev / 30s production)
-- Dark background with light gray borders and white text
+- A new fourth column is built just off-screen to the right
+- Continuous sliding animation from left to right
 
 ### Content Types
 1. **Schedule** - Upcoming games
@@ -31,8 +21,9 @@ First implementation: **Cape Breton West** (Nova Scotia U18 Major Hockey League)
 6. **Twitter** - Social media feed
 7. **Sponsors** - Sponsor content
 8. **Photos** - Historic team moments
-9. **Profiles** - Player spotlights
-10. **Facts** - Did-you-know content
+9. **Videos** - Highlights and history (no audio)
+10. **Profiles** - Player spotlights with photos
+11. **Facts** - Did-you-know content
 
 ### Content Sizes
 - **Small** (1 row): Brief info display
@@ -43,20 +34,17 @@ First implementation: **Cape Breton West** (Nova Scotia U18 Major Hockey League)
 - **Framework**: Vue 3 with Composition API
 - **Styling**: Tailwind CSS v4 with PostCSS
 - **Animation**: CSS transforms with linear easing
-- **Data**: Dummy data structure ready for real API integration
-- **Content Logic**: Prevents duplicate content types on screen
+- **Data**: Dummy json data structure ready for real API integration
+- **Content Logic**: Prevents duplicate content types on screen, ensures each content type variant gets shown on a regular basis
 
 ## Usage Commands
 ```bash
-npm run dev      # Development server (5s animation intervals)
-npm run build    # Build for production
-npm run preview  # Preview built app
-npm run kiosk    # Launch in fullscreen kiosk mode
+npm run dev      # Preview in development server with no animation
+npm run preview  # Preview built app with 5s animation
+npm run build    # Build for production with 30s animation
 ```
 
 ## Next Steps
 - Replace dummy data with real Cape Breton West team data
-- Implement daily data caching system  
+- Implement daily data update/caching system
 - Add content priority weighting system
-- Deploy for kiosk environment testing
-- Change animation interval to 30 seconds for production 
