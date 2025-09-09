@@ -59,7 +59,23 @@ const slideColumns = () => {
 
 onMounted(() => {
   initializeColumns()
-  slideInterval = setInterval(slideColumns, 5000) // 5 seconds for development
+  
+  // Environment-specific timing
+  const isDev = import.meta.env.MODE === 'development'
+  const isPreview = window.location.port === '4173' || import.meta.env.COMMAND === 'preview'
+  
+  let intervalTime: number
+  if (isDev) {
+    intervalTime = 0 // No animation in development
+  } else if (isPreview) {
+    intervalTime = 5000 // 5 seconds for preview
+  } else {
+    intervalTime = 30000 // 30 seconds for production
+  }
+  
+  if (intervalTime > 0) {
+    slideInterval = setInterval(slideColumns, intervalTime)
+  }
 })
 
 onUnmounted(() => {

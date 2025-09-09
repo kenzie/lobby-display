@@ -7,6 +7,7 @@ export type ContentType =
   | 'twitter'
   | 'sponsors'
   | 'photos'
+  | 'videos'
   | 'profiles'
   | 'facts'
 

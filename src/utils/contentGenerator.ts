@@ -4,7 +4,7 @@ import type { ContentBlock, ContentType, ContentSize, Column } from '@/types'
 const contentTypes: ContentType[] = [
   'schedule', 'results', 'standings', 'statistics', 
   'news', 'twitter', 'sponsors', 'photos', 
-  'profiles', 'facts'
+  'videos', 'profiles', 'facts'
 ]
 
 const contentSizes: ContentSize[] = ['small', 'medium', 'large']

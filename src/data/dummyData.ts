@@ -149,7 +149,7 @@ export const dummyData = {
     small: {
       size: 'small',
       latestTweet: {
-        handle: 'ourteam',
+        handle: '@CBWestIslanders',
         text: 'Great win tonight! Fans were incredible as always. Next game Tuesday at home!'
       }
     },
@@ -158,13 +158,13 @@ export const dummyData = {
       tweets: [
         {
           id: 1,
-          handle: 'ourteam',
+          handle: '@CBWestIslanders',
           text: 'Great win tonight! Fans were incredible.',
           time: '2h'
         },
         {
           id: 2,
-          handle: 'player23',
+          handle: '@JakeMacD19',
           text: 'Thanks for all the support tonight!',
           time: '3h'
         }
@@ -175,19 +175,19 @@ export const dummyData = {
       tweets: [
         {
           id: 1,
-          handle: 'ourteam',
+          handle: '@CBWestIslanders',
           text: 'Great win tonight! Fans were incredible as always. Next game Tuesday at home!',
           time: '2h'
         },
         {
           id: 2,
-          handle: 'player23',
+          handle: '@JakeMacD19',
           text: 'Thanks for all the support tonight! Love playing in front of our home crowd.',
           time: '3h'
         },
         {
           id: 3,
-          handle: 'coach_smith',
+          handle: '@CoachMacKenzie',
           text: 'Proud of how the team battled back in the third period.',
           time: '4h'
         }
@@ -199,22 +199,22 @@ export const dummyData = {
     small: {
       size: 'small',
       sponsor: {
-        name: 'Local Bank'
+        name: 'Credit Union Atlantic'
       }
     },
     medium: {
       size: 'medium',
       sponsor: {
-        name: 'Local Bank',
-        tagline: 'Supporting Our Community'
+        name: 'Credit Union Atlantic',
+        tagline: 'Supporting Cape Breton Hockey'
       }
     },
     large: {
       size: 'large',
       sponsor: {
-        name: 'Local Bank',
-        tagline: 'Supporting Our Community',
-        description: 'Proudly serving the community for over 50 years'
+        name: 'Credit Union Atlantic',
+        tagline: 'Supporting Cape Breton Hockey',
+        description: 'Proudly serving Cape Breton communities for over 80 years'
       }
     }
   },
@@ -264,19 +264,19 @@ export const dummyData = {
     small: {
       size: 'small',
       player: {
-        number: 97,
-        name: 'Connor McDavid',
+        number: 19,
+        name: 'Jake MacDonald',
         position: 'C'
       }
     },
     medium: {
       size: 'medium',
       player: {
-        number: 97,
-        name: 'Connor McDavid',
+        number: 19,
+        name: 'Jake MacDonald',
         position: 'C',
-        hometown: 'Richmond Hill, ON',
-        stats: '27G 58A 85P'
+        hometown: 'Sydney, NS',
+        stats: '13G 25A 38P'
       }
     },
     large: {
@@ -284,21 +284,43 @@ export const dummyData = {
       players: [
         {
           id: 1,
-          number: 97,
-          name: 'Connor McDavid',
+          number: 19,
+          name: 'Jake MacDonald',
           position: 'C',
-          hometown: 'Richmond Hill, ON',
-          bio: 'Team captain and leading scorer, known for incredible speed and playmaking ability.'
+          hometown: 'Sydney, NS',
+          bio: 'Team captain and leading scorer, known for incredible vision and leadership.'
         },
         {
           id: 2,
-          number: 29,
-          name: 'Leon Draisaitl',
-          position: 'C',
-          hometown: 'Cologne, Germany',
-          bio: 'Versatile forward who can play center or wing, excellent in all situations.'
+          number: 27,
+          name: 'Liam Campbell',
+          position: 'RW',
+          hometown: 'Glace Bay, NS',
+          bio: 'Leading goal scorer with a powerful shot, exciting young talent.'
         }
       ]
+    }
+  },
+
+  videos: {
+    small: {
+      size: 'small',
+      title: 'Championship Goals',
+      duration: '2:34'
+    },
+    medium: {
+      size: 'medium',
+      title: 'Championship Goals',
+      duration: '2:34',
+      description: 'Relive the best goals from our championship run'
+    },
+    large: {
+      size: 'large',
+      title: '2019 Championship Highlights',
+      duration: '5:47',
+      description: 'Complete highlights from our historic championship victory over Halifax McDonalds',
+      date: 'March 2019',
+      category: 'Championship'
     }
   },
 
@@ -306,13 +328,13 @@ export const dummyData = {
     small: {
       size: 'small',
       fact: {
-        text: 'Our arena holds 18,500 fans'
+        text: 'Cape Breton Centre holds 3,500 fans'
       }
     },
     medium: {
       size: 'medium',
       fact: {
-        text: 'Our arena holds 18,500 fans and opened in 1996'
+        text: 'Cape Breton Centre holds 3,500 fans and opened in 1988'
       }
     },
     large: {
@@ -320,17 +342,17 @@ export const dummyData = {
       facts: [
         {
           id: 1,
-          text: 'Our arena holds 18,500 fans and opened in 1996',
+          text: 'Cape Breton Centre holds 3,500 fans and opened in 1988',
           category: 'Arena Facts'
         },
         {
           id: 2,
-          text: 'The team was founded in 1972',
+          text: 'The Cape Breton West Islanders were founded in 1988',
           category: 'History'
         },
         {
           id: 3,
-          text: 'We have retired 6 jersey numbers',
+          text: 'We have won 3 NS U18MHL championships',
           category: 'Honors'
         }
       ]

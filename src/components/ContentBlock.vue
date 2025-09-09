@@ -20,6 +20,7 @@ import NewsContent from './content/NewsContent.vue'
 import TwitterContent from './content/TwitterContent.vue'
 import SponsorsContent from './content/SponsorsContent.vue'
 import PhotosContent from './content/PhotosContent.vue'
+import VideosContent from './content/VideosContent.vue'
 import ProfilesContent from './content/ProfilesContent.vue'
 import FactsContent from './content/FactsContent.vue'
 
@@ -45,6 +46,7 @@ const contentComponents = {
   twitter: TwitterContent,
   sponsors: SponsorsContent,
   photos: PhotosContent,
+  videos: VideosContent,
   profiles: ProfilesContent,
   facts: FactsContent
 }
