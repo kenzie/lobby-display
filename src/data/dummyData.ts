@@ -305,22 +305,22 @@ export const dummyData = {
   videos: {
     small: {
       size: 'small',
-      title: 'Championship Goals',
-      duration: '2:34'
+      title: 'Player Highlights',
+      duration: '1:15'
     },
     medium: {
       size: 'medium',
-      title: 'Championship Goals',
+      title: 'Game Highlights',
       duration: '2:34',
-      description: 'Relive the best goals from our championship run'
+      description: 'Best moments from recent games'
     },
     large: {
       size: 'large',
-      title: '2019 Championship Highlights',
-      duration: '5:47',
-      description: 'Complete highlights from our historic championship victory over Halifax McDonalds',
-      date: 'March 2019',
-      category: 'Championship'
+      title: 'Cape Breton West Highlights',
+      duration: '3:21',
+      description: 'Amazing plays and goals from our talented players',
+      date: 'Season 2024',
+      category: 'Highlights'
     }
   },
 

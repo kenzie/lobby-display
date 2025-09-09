@@ -1,18 +1,20 @@
 <template>
-  <div class="h-full">
-    <div v-if="data.size === 'small'" class="text-lg">
-      {{ data.headline }}
+  <div class="text-slate-100" style="padding: 8px 16px;">
+    <div v-if="size === 'small'" class="flex items-center justify-center">
+      <div class="text-center">
+        <div class="text-lg font-semibold text-white">{{ data.headline }}</div>
+      </div>
     </div>
-    <div v-else-if="data.size === 'medium'" class="space-y-2">
-      <div class="text-xl font-bold">Latest News</div>
-      <div class="text-sm">{{ data.headline }}</div>
-      <div class="text-xs text-gray-300">{{ data.summary }}</div>
+    <div v-else-if="size === 'medium'" class="space-y-3">
+      <div class="bg-slate-700/30 rounded-md p-3 border border-slate-600">
+        <div class="text-sm font-semibold text-white mb-2">{{ data.headline }}</div>
+        <div class="text-xs text-slate-300">{{ data.summary }}</div>
+      </div>
     </div>
-    <div v-else class="space-y-3">
-      <div class="text-2xl font-bold">Team News</div>
-      <div v-for="article in data.articles" :key="article.id" class="space-y-1">
-        <div class="text-sm font-bold">{{ article.headline }}</div>
-        <div class="text-xs text-gray-300">{{ article.summary }}</div>
+    <div v-else class="space-y-2">
+      <div v-for="article in data.articles" :key="article.id" class="bg-slate-700/20 rounded-md p-3 border border-slate-600/50">
+        <div class="text-sm font-semibold text-white mb-1">{{ article.headline }}</div>
+        <div class="text-xs text-slate-300">{{ article.summary }}</div>
       </div>
     </div>
   </div>
@@ -21,6 +23,7 @@
 <script setup lang="ts">
 interface Props {
   data: any
+  size: 'small' | 'medium' | 'large'
 }
 
 defineProps<Props>()

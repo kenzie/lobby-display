@@ -1,5 +1,5 @@
 <template>
-  <div class="w-screen h-screen bg-black overflow-hidden flex">
+  <div class="w-screen h-screen bg-slate-900 overflow-hidden flex">
     <div
       class="flex"
       :class="{ 'transition-transform duration-1000 ease-linear': isSliding }"
@@ -9,7 +9,7 @@
         v-for="column in visibleColumns"
         :key="column.id"
         class="flex-shrink-0 flex flex-col"
-        :style="{ width: `${100 / 3}vw` }"
+        :style="{ width: `${100 / 3}vw`, padding: '32px 16px', gap: '32px' }"
       >
         <ContentBlock
           v-for="block in column.blocks"
@@ -61,8 +61,8 @@ onMounted(() => {
   initializeColumns()
   
   // Environment-specific timing
-  const isDev = import.meta.env.MODE === 'development'
-  const isPreview = window.location.port === '4173' || import.meta.env.COMMAND === 'preview'
+  const isDev = import.meta.env.DEV
+  const isPreview = window.location.port === '4173'
   
   let intervalTime: number
   if (isDev) {
