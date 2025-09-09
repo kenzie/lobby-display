@@ -36,6 +36,7 @@ First implementation: **Cape Breton West Islanders** (Nova Scotia U18 Major Hock
 - **Animation**: CSS transforms with linear easing
 - **Data**: Dummy json data structure ready for real API integration
 - **Content Logic**: Prevents duplicate content types on screen, ensures each content type variant gets shown on a regular basis
+- **Organization**: Arrange files in folders to keep everything oranized
 
 ## Usage Commands
 ```bash
