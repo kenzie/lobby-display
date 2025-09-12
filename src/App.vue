@@ -1,14 +1,14 @@
 <template>
   <div class="w-screen h-screen bg-slate-900 overflow-hidden flex">
     <div
-      class="flex"
-      :class="{ 'transition-transform duration-1000 ease-linear': isSliding }"
-      :style="{ transform: `translateX(${slideOffset}px)` }"
+      ref="slideContainer"
+      class="flex columns-container"
+      :class="{ 'sliding': isSliding }"
     >
       <div
         v-for="column in visibleColumns"
         :key="column.id"
-        class="flex-shrink-0 flex flex-col"
+        class="flex-shrink-0 flex flex-col column"
         :style="{ width: `${100 / 3}vw`, padding: '32px 16px', gap: '32px' }"
       >
         <ContentBlock
@@ -28,8 +28,7 @@ import { generateRandomColumn } from './utils/contentGenerator'
 import type { Column } from './types'
 
 const visibleColumns = ref<Column[]>([])
-const slideOffset = ref(0)
-const columnWidth = window.innerWidth / 3
+const slideContainer = ref<HTMLElement>()
 const isSliding = ref(false)
 
 let slideInterval: number
@@ -42,19 +41,17 @@ const initializeColumns = () => {
 }
 
 const slideColumns = () => {
-  if (isSliding.value) return
+  if (isSliding.value || !slideContainer.value) return
   
   isSliding.value = true
-  slideOffset.value -= columnWidth
   
-  setTimeout(() => {
+  // Use CSS animation instead of JavaScript transforms
+  slideContainer.value.addEventListener('animationend', () => {
     // Remove first column and add new one at the end
     visibleColumns.value.shift()
     visibleColumns.value.push(generateRandomColumn())
-    // Reset without animation
-    slideOffset.value = 0
     isSliding.value = false
-  }, 1000) // Match transition duration
+  }, { once: true })
 }
 
 onMounted(() => {
@@ -84,3 +81,29 @@ onUnmounted(() => {
   }
 })
 </script>
+
+<style scoped>
+.columns-container {
+  will-change: transform;
+  transform: translate3d(0, 0, 0);
+  backface-visibility: hidden;
+}
+
+.columns-container.sliding {
+  animation: slideLeft 1000ms cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+}
+
+.column {
+  transform: translate3d(0, 0, 0);
+  backface-visibility: hidden;
+}
+
+@keyframes slideLeft {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    transform: translate3d(-33.333333vw, 0, 0);
+  }
+}
+</style>
