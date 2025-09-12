@@ -45,8 +45,16 @@ const slideColumns = () => {
   
   isSliding.value = true
   
+  // Performance monitoring for Linux debugging
+  const animationStart = performance.now()
+  
   // Use CSS animation instead of JavaScript transforms
   slideContainer.value.addEventListener('animationend', () => {
+    const animationDuration = performance.now() - animationStart
+    if (animationDuration > 1100) { // Should be ~1000ms
+      console.warn(`Animation took ${animationDuration.toFixed(2)}ms (expected ~1000ms)`)
+    }
+    
     // Remove first column and add new one at the end
     visibleColumns.value.shift()
     visibleColumns.value.push(generateRandomColumn())
@@ -87,23 +95,56 @@ onUnmounted(() => {
   will-change: transform;
   transform: translate3d(0, 0, 0);
   backface-visibility: hidden;
+  contain: layout style paint;
+  transform-style: preserve-3d;
+  isolation: isolate;
 }
 
 .columns-container.sliding {
-  animation: slideLeft 1000ms cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+  animation: slideLeft 1000ms cubic-bezier(0.23, 1, 0.32, 1) forwards;
 }
 
 .column {
   transform: translate3d(0, 0, 0);
   backface-visibility: hidden;
+  contain: layout style paint;
+  will-change: transform;
 }
 
 @keyframes slideLeft {
-  from {
+  0% {
     transform: translate3d(0, 0, 0);
   }
-  to {
+  100% {
     transform: translate3d(-33.333333vw, 0, 0);
   }
+}
+
+/* Linux-specific optimizations */
+@media (prefers-reduced-motion: no-preference) {
+  .columns-container {
+    /* Force hardware acceleration on Linux */
+    perspective: 1000px;
+  }
+}
+
+/* Fallback for low-performance systems */
+@media (prefers-reduced-motion: reduce) {
+  .columns-container.sliding {
+    animation: slideLeftSimple 800ms ease-out forwards;
+  }
+  
+  @keyframes slideLeftSimple {
+    to {
+      transform: translateX(-33.333333vw);
+    }
+  }
+}
+
+/* Detect potential Linux performance issues */
+.columns-container.sliding {
+  /* Ensure consistent frame timing */
+  animation-fill-mode: both;
+  animation-timing-function: cubic-bezier(0.23, 1, 0.32, 1);
 }
 </style>
