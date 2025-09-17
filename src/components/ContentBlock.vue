@@ -1,21 +1,20 @@
 <template>
   <div
-    class="bg-transparent shadow-lg flex flex-col border border-slate-700"
+    class="flex flex-col overflow-hidden"
     :class="sizeClasses[block.size]"
-    style="background-color: transparent; color: #f1f5f9; border-color: #334155; border-radius: 8px;"
+    style="background-color: #1e1e1e; 
+           color: #ffffff; 
+           border: none;
+           border-radius: 8px;"
   >
-    <div class="bg-slate-700/50" style="background-color: #374151; border-top-left-radius: 8px; border-top-right-radius: 8px; padding: 8px 16px;">
-      <div class="flex items-center justify-between">
-        <h3 class="text-sm font-semibold text-slate-200 uppercase tracking-wider">
-          {{ formatContentType(block.type) }}
-        </h3>
-        <span class="inline-flex items-center text-xs font-medium" 
-              style="background-color: #1e40af; color: #dbeafe; padding: 4px 8px; border-radius: 6px;">
-          {{ block.size }}
-        </span>
-      </div>
+    <div class="px-6 py-4 border-b" 
+         style="background-color: transparent; 
+                border-bottom: none;">
+      <h3 class="text-sm font-semibold text-gray-300 uppercase tracking-wide">
+        {{ formatContentType(block.type) }}
+      </h3>
     </div>
-    <div class="flex-1">
+    <div class="flex-1 overflow-hidden">
       <component :is="contentComponent" :data="block.data" :size="block.size" />
     </div>
   </div>

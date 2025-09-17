@@ -2,27 +2,68 @@ export const dummyData = {
   schedule: {
     small: {
       size: 'small',
-      nextGame: {
-        opponent: 'Truro Bearcats',
-        time: '7:00 PM'
-      }
+      homeTeam: {
+        name: 'Cape Breton West',
+        abbr: 'CBW',
+        record: '22-8'
+      },
+      lastResult: {
+        date: 'Aug 23',
+        opponent: { name: 'Weeks', abbr: 'WKS', record: '15-12' },
+        score: 'W 3-2',
+        location: 'Home'
+      },
+      upcomingGames: [
+        { id: 1, date: 'Sep 13', opponent: { name: 'Wildcats', abbr: 'WC', record: '18-9' }, time: '7:00 PM', location: 'Home' },
+        { id: 2, date: 'Sep 14', opponent: { name: 'Wildcats', abbr: 'WC', record: '18-9' }, time: '2:00 PM', location: 'Home' }
+      ]
     },
     medium: {
       size: 'medium',
+      homeTeam: {
+        name: 'Cape Breton West',
+        abbr: 'CBW',
+        record: '22-8'
+      },
+      pastResults: [
+        { id: 1, date: 'Aug 23', opponent: { name: 'Weeks', abbr: 'WKS', record: '15-12' }, score: 'L 3-4', location: 'Home' },
+        { id: 2, date: 'Aug 23', opponent: { name: 'Weeks', abbr: 'WKS', record: '15-12' }, score: 'W 3-2', location: 'Home' }
+      ],
       upcomingGames: [
-        { id: 1, date: 'Jan 15', opponent: 'Truro Bearcats', time: '7:00 PM' },
-        { id: 2, date: 'Jan 18', opponent: 'Halifax McDonalds', time: '7:30 PM' },
-        { id: 3, date: 'Jan 22', opponent: 'Dartmouth Whalers', time: '2:00 PM' }
+        { id: 3, date: 'Sep 13', opponent: { name: 'Wildcats', abbr: 'WC', record: '18-9' }, time: '7:00 PM', location: 'Home' },
+        { id: 4, date: 'Sep 14', opponent: { name: 'Wildcats', abbr: 'WC', record: '18-9' }, time: '2:00 PM', location: 'Home' },
+        { id: 5, date: 'Sep 20', opponent: { name: 'Macs', abbr: 'MAC', record: '20-5' }, time: '7:30 PM', location: 'Home' },
+        { id: 6, date: 'Sep 21', opponent: { name: 'Macs', abbr: 'MAC', record: '20-5' }, time: '1:00 PM', location: 'Home' }
       ]
     },
     large: {
       size: 'large',
+      homeTeam: {
+        name: 'Cape Breton West',
+        abbr: 'CBW',
+        record: '22-8'
+      },
+      pastResults: [
+        { id: 1, date: 'Aug 23', opponent: { name: 'Weeks', abbr: 'WKS', record: '15-12' }, score: 'L 3-4', location: 'Home' },
+        { id: 2, date: 'Aug 23', opponent: { name: 'Weeks', abbr: 'WKS', record: '15-12' }, score: 'W 3-2', location: 'Home' }
+      ],
       upcomingGames: [
-        { id: 1, date: 'Jan 15', opponent: 'Truro Bearcats', time: '7:00 PM' },
-        { id: 2, date: 'Jan 18', opponent: 'Halifax McDonalds', time: '7:30 PM' },
-        { id: 3, date: 'Jan 22', opponent: 'Dartmouth Whalers', time: '2:00 PM' },
-        { id: 4, date: 'Jan 25', opponent: 'Valley Wildcats', time: '7:00 PM' },
-        { id: 5, date: 'Jan 28', opponent: 'South Shore Lumberjacks', time: '2:00 PM' }
+        { id: 3, date: 'Sep 13', opponent: { name: 'Wildcats', abbr: 'WC', record: '18-9' }, time: '7:00 PM', location: 'Home' },
+        { id: 4, date: 'Sep 14', opponent: { name: 'Wildcats', abbr: 'WC', record: '18-9' }, time: '2:00 PM', location: 'Home' },
+        { id: 5, date: 'Sep 20', opponent: { name: 'Macs', abbr: 'MAC', record: '20-5' }, time: '7:30 PM', location: 'Home' },
+        { id: 6, date: 'Sep 21', opponent: { name: 'Macs', abbr: 'MAC', record: '20-5' }, time: '1:00 PM', location: 'Home' },
+        { id: 7, date: 'Sep 27', opponent: { name: 'Hunters', abbr: 'HUN', record: '16-11' }, time: '7:00 PM', location: 'Away' },
+        { id: 8, date: 'Sep 28', opponent: { name: 'Macs', abbr: 'MAC', record: '20-5' }, time: '3:00 PM', location: 'Away' },
+        { id: 9, date: 'Oct 4', opponent: { name: 'Hunters', abbr: 'HUN', record: '16-11' }, time: '7:30 PM', location: 'Home' },
+        { id: 10, date: 'Oct 5', opponent: { name: 'Hunters', abbr: 'HUN', record: '16-11' }, time: '2:00 PM', location: 'Home' },
+        { id: 11, date: 'Oct 11', opponent: { name: 'Rush', abbr: 'RSH', record: '12-15' }, time: '7:00 PM', location: 'Home' },
+        { id: 12, date: 'Oct 12', opponent: { name: 'Rush', abbr: 'RSH', record: '12-15' }, time: '1:30 PM', location: 'Home' },
+        { id: 13, date: 'Oct 18', opponent: { name: 'Wildcats', abbr: 'WC', record: '18-9' }, time: '7:00 PM', location: 'Home' },
+        { id: 14, date: 'Oct 19', opponent: { name: 'Wildcats', abbr: 'WC', record: '18-9' }, time: '2:00 PM', location: 'Home' },
+        { id: 15, date: 'Oct 25', opponent: { name: 'Vito\'s', abbr: 'VIT', record: '14-13' }, time: '7:30 PM', location: 'Home' },
+        { id: 16, date: 'Oct 26', opponent: { name: 'Knights', abbr: 'KNT', record: '10-17' }, time: '1:00 PM', location: 'Home' },
+        { id: 17, date: 'Nov 1', opponent: { name: 'Steele', abbr: 'STL', record: '19-8' }, time: '7:00 PM', location: 'Away' },
+        { id: 18, date: 'Nov 2', opponent: { name: 'Weeks', abbr: 'WKS', record: '15-12' }, time: '3:00 PM', location: 'Away' }
       ]
     }
   },

@@ -6,13 +6,13 @@
       </div>
     </div>
     <div v-else-if="size === 'medium'" class="space-y-3">
-      <div class="bg-slate-700/30 rounded-md p-3 border border-slate-600">
+      <div class="bg-slate-700/30 rounded-md p-3">
         <div class="text-sm font-semibold text-white mb-2">{{ data.headline }}</div>
         <div class="text-xs text-slate-300">{{ data.summary }}</div>
       </div>
     </div>
     <div v-else class="space-y-2">
-      <div v-for="article in data.articles" :key="article.id" class="bg-slate-700/20 rounded-md p-3 border border-slate-600/50">
+      <div v-for="article in data.articles" :key="article.id" class="bg-slate-700/20 rounded-md p-3">
         <div class="text-sm font-semibold text-white mb-1">{{ article.headline }}</div>
         <div class="text-xs text-slate-300">{{ article.summary }}</div>
       </div>

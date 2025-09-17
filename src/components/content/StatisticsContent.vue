@@ -7,7 +7,7 @@
     </div>
     <div v-else-if="size === 'medium'" class="space-y-3">
       <div class="text-lg font-semibold text-white mb-2">Team Leaders</div>
-      <div class="bg-slate-700/30 rounded-md p-3 border border-slate-600 space-y-2">
+      <div class="bg-slate-700/30 rounded-md p-3 space-y-2">
         <div class="flex justify-between">
           <span class="text-slate-300">Goals:</span>
           <span class="text-white font-medium">{{ data.leaders.goals.name }} ({{ data.leaders.goals.value }})</span>
@@ -24,7 +24,7 @@
     </div>
     <div v-else class="space-y-2">
       <div class="text-xl font-bold text-white mb-3">Player Statistics</div>
-      <div v-for="player in data.players" :key="player.name" class="bg-slate-700/20 rounded-md p-3 border border-slate-600/50">
+      <div v-for="player in data.players" :key="player.name" class="bg-slate-700/20 rounded-md p-3">
         <div class="flex justify-between items-center">
           <span class="font-semibold text-white">{{ player.name }}</span>
           <span class="text-slate-300">{{ player.goals }}G {{ player.assists }}A {{ player.points }}P</span>
