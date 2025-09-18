@@ -134,20 +134,7 @@ interface Props {
 
 defineProps<Props>()
 
-const getResultStyle = (score: string) => {
-  const isWin = score.startsWith('W')
-  return {
-    backgroundColor: isWin ? '#22c55e' : '#ef4444',
-    color: '#ffffff',
-    border: 'none'
-  }
-}
-
 const getOpponentAbbr = (opponent: any) => {
   return opponent?.abbr || opponent
-}
-
-const getCurrentRecord = () => {
-  return '22-8'
 }
 </script>
