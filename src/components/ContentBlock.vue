@@ -4,7 +4,7 @@
     :class="sizeClasses[block.size]"
   >
     <div v-if="!(block.type === 'videos' && block.size === 'small')" class="px-6 py-4">
-      <h3 class="text-5xl font-semibold text-gray-500 uppercase tracking-tight">
+      <h3 class="text-2xl font-semibold text-gray-500 uppercase tracking-tight">
         {{ formatContentType(block.type) }}
       </h3>
     </div>

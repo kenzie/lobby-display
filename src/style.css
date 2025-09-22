@@ -1,1 +1,18 @@
 @import "tailwindcss";
+
+html {
+  font-size: 100%; /* Default size for small screens */
+}
+
+/* Large displays */
+@media (min-width: 1440px) {
+  html {
+    font-size: 150%; /* 1.5x size for large displays */
+  }
+}
+
+@media (min-width: 2560px) {
+  html {
+    font-size: 300%; /* Triple size for ultra-large displays */
+  }
+}
