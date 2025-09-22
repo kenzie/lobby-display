@@ -23,9 +23,9 @@
         </video>
       </div>
       <div style="padding: 0 16px; margin-bottom: 12px;">
-        <h3 class="text-lg font-semibold text-white">{{ data.title }}</h3>
+        <h3 class="text-xs font-semibold text-white">{{ data.title }}</h3>
       </div>
-      <p class="text-sm text-slate-300" style="padding: 0 16px;">{{ data.description }}</p>
+      <p class="text-xs text-slate-300" style="padding: 0 16px;">{{ data.description }}</p>
     </div>
 
     <div v-else class="flex flex-col h-full">
@@ -40,11 +40,11 @@
         </video>
       </div>
       <div style="padding: 0 16px; margin-bottom: 12px;">
-        <h3 class="text-xl font-semibold text-white">{{ data.title }}</h3>
+        <h3 class="text-xs font-semibold text-white">{{ data.title }}</h3>
       </div>
       <div style="padding: 0 16px;">
         <p class="text-slate-300 mb-2">{{ data.description }}</p>
-        <div class="flex justify-between text-sm">
+        <div class="flex justify-between text-xs">
           <span class="text-slate-400">{{ data.date }}</span>
           <span class="px-2 py-1 rounded text-xs text-slate-200" style="background-color: #475569;">{{ data.category }}</span>
         </div>

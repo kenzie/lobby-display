@@ -7,9 +7,9 @@
         <div class="flex flex-col items-center">
           <div class="w-16 h-16 rounded-full mb-3 flex items-center justify-center" 
                style="background: linear-gradient(135deg, #1d4ed8 0%, #3b82f6 100%);">
-            <span class="text-white font-bold text-lg">{{ data.homeTeam?.abbr || 'CBW' }}</span>
+            <span class="text-white font-bold text-xs">{{ data.homeTeam?.abbr || 'CBW' }}</span>
           </div>
-          <div class="text-sm font-medium text-white">{{ data.homeTeam?.abbr || 'CBW' }}</div>
+          <div class="text-xs font-medium text-white">{{ data.homeTeam?.abbr || 'CBW' }}</div>
           <div class="text-xs text-gray-400 mt-1">{{ data.homeTeam?.record || '22-8' }}</div>
         </div>
         
@@ -23,9 +23,9 @@
         <div class="flex flex-col items-center">
           <div class="w-16 h-16 rounded-full mb-3 flex items-center justify-center" 
                style="background: linear-gradient(135deg, #dc2626 0%, #ef4444 100%);">
-            <span class="text-white font-bold text-lg">{{ getOpponentAbbr(data.upcomingGames[0].opponent) }}</span>
+            <span class="text-white font-bold text-xs">{{ getOpponentAbbr(data.upcomingGames[0].opponent) }}</span>
           </div>
-          <div class="text-sm font-medium text-white">{{ getOpponentAbbr(data.upcomingGames[0].opponent) }}</div>
+          <div class="text-xs font-medium text-white">{{ getOpponentAbbr(data.upcomingGames[0].opponent) }}</div>
           <div class="text-xs text-gray-400 mt-1">{{ data.upcomingGames[0].opponent?.record || '0-0' }}</div>
         </div>
       </div>
@@ -40,7 +40,7 @@
           <div class="flex flex-col items-center">
             <div class="w-14 h-14 rounded-full mb-2 flex items-center justify-center" 
                  style="background: linear-gradient(135deg, #1d4ed8 0%, #3b82f6 100%);">
-              <span class="text-white font-bold text-sm">{{ data.homeTeam?.abbr || 'CBW' }}</span>
+              <span class="text-white font-bold text-xs">{{ data.homeTeam?.abbr || 'CBW' }}</span>
             </div>
             <div class="text-xs font-medium text-white">{{ data.homeTeam?.abbr || 'CBW' }}</div>
           </div>
@@ -55,7 +55,7 @@
           <div class="flex flex-col items-center">
             <div class="w-14 h-14 rounded-full mb-2 flex items-center justify-center" 
                  style="background: linear-gradient(135deg, #dc2626 0%, #ef4444 100%);">
-              <span class="text-white font-bold text-sm">{{ getOpponentAbbr(game.opponent) }}</span>
+              <span class="text-white font-bold text-xs">{{ getOpponentAbbr(game.opponent) }}</span>
             </div>
             <div class="text-xs font-medium text-white">{{ getOpponentAbbr(game.opponent) }}</div>
           </div>
@@ -80,7 +80,7 @@
           
           <!-- Score/Result -->
           <div class="flex flex-col items-center px-4">
-            <div class="text-lg font-bold text-white">{{ game.score }}</div>
+            <div class="text-xs font-bold text-white">{{ game.score }}</div>
             <div class="text-xs text-gray-400">{{ game.date }}</div>
           </div>
           
@@ -108,7 +108,7 @@
           
           <!-- Time -->
           <div class="flex flex-col items-center px-4">
-            <div class="text-lg font-bold text-white">{{ game.time }}</div>
+            <div class="text-xs font-bold text-white">{{ game.time }}</div>
             <div class="text-xs text-gray-400">{{ game.date }}</div>
           </div>
           
