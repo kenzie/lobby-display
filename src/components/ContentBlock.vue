@@ -36,8 +36,8 @@ interface Props {
 const props = defineProps<Props>()
 
 const sizeClasses = {
-  small: 'h-[calc(33.333%-10.67px)]', // 1 row minus gap adjustment
-  medium: 'h-[calc(66.667%-5.33px)]', // 2 rows minus gap adjustment  
+  small: 'h-[calc(33.333%-21.33px)]', // 1 row minus gap adjustment
+  medium: 'h-[calc(66.667%-10.67px)]', // 2 rows minus gap adjustment  
   large: 'h-full' // 3 rows
 }
 
