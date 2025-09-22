@@ -1,16 +1,10 @@
 <template>
   <div
-    class="flex flex-col overflow-hidden"
+    class="flex flex-col overflow-hidden bg-gray-800 text-white rounded-lg"
     :class="sizeClasses[block.size]"
-    style="background-color: #1e1e1e; 
-           color: #ffffff; 
-           border: none;
-           border-radius: 8px;"
   >
-    <div class="px-6 py-4 border-b" 
-         style="background-color: transparent; 
-                border-bottom: none;">
-      <h3 class="text-sm font-semibold text-gray-300 uppercase tracking-wide">
+    <div class="px-6 py-4">
+      <h3 class="text-2xl font-semibold text-gray-300 uppercase tracking-wide m-4">
         {{ formatContentType(block.type) }}
       </h3>
     </div>
