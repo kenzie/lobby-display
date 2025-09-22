@@ -64,10 +64,10 @@
     </div>
 
     <!-- Large: Compact schedule list -->
-    <div v-else class="px-3 py-4">
-      <div class="space-y-4 max-h-72 overflow-y-auto">
+    <div v-else class="px-3 py-2 h-full">
+      <div class="space-y-3 h-full overflow-y-auto">
         <!-- Results -->
-        <div v-for="game in data.pastResults" :key="game.id" 
+        <div v-for="game in data.pastResults.slice(0, 2)" :key="game.id" 
              class="flex items-center justify-between py-2">
           <!-- Home Team -->
           <div class="flex flex-col items-center">
@@ -95,7 +95,7 @@
         </div>
         
         <!-- Upcoming Games -->
-        <div v-for="game in data.upcomingGames" :key="game.id" 
+        <div v-for="game in data.upcomingGames.slice(0, 4)" :key="game.id" 
              class="flex items-center justify-between py-2">
           <!-- Home Team -->
           <div class="flex flex-col items-center">

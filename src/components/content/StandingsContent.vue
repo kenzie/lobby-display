@@ -26,14 +26,15 @@
       </div>
     </div>
     <div v-else class="space-y-1">
-      <div class="bg-slate-700/30 rounded-md px-3 py-2 mb-2 grid grid-cols-4 gap-2 text-xs text-slate-400 uppercase tracking-wider">
-        <div>Team</div>
+      <div class="bg-slate-700/30 rounded-md px-3 py-2 mb-2 grid grid-cols-5 gap-2 text-xs text-slate-400 uppercase tracking-wider">
+        <div class="col-span-2">Team</div>
         <div class="text-center">W-L-OTL</div>
+        <div class="text-center">GP</div>
         <div class="text-center">Pts</div>
       </div>
       <div v-for="(team, index) in data.standings" :key="team.name" 
-           class="grid grid-cols-4 gap-2 items-center py-2 border-b border-slate-700/30 last:border-b-0">
-        <div class="flex items-center">
+           class="grid grid-cols-5 gap-2 items-center py-2 border-b border-slate-700/30 last:border-b-0">
+        <div class="flex items-center col-span-2">
           <span class="w-6 text-xs font-medium mr-2" 
                 :class="index < 3 ? 'text-green-400' : 'text-slate-400'">
             {{ index + 1 }}
@@ -44,6 +45,7 @@
           </span>
         </div>
         <span class="text-center text-xs text-slate-300">{{ team.wins }}-{{ team.losses }}-{{ team.otl }}</span>
+        <span class="text-center text-xs text-slate-300">{{ team.gamesPlayed || (team.wins + team.losses + team.otl) }}</span>
         <span class="text-center font-bold text-white">{{ team.points }}</span>
       </div>
     </div>
