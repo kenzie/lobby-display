@@ -9,7 +9,7 @@
         v-for="column in visibleColumns"
         :key="column.id"
         class="flex-shrink-0 flex flex-col column"
-        :style="{ width: `${100 / 3}vw`, padding: '32px 16px', gap: '32px' }"
+        :style="{ width: `${100 / 3}vw`, padding: '32px 16px', gap: '16px' }"
       >
         <ContentBlock
           v-for="block in column.blocks"
