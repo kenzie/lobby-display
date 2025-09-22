@@ -3,7 +3,7 @@
     class="flex flex-col overflow-hidden bg-gray-800 text-white rounded-lg"
     :class="sizeClasses[block.size]"
   >
-    <div class="px-6 py-4">
+    <div v-if="!(block.type === 'videos' && block.size === 'small')" class="px-6 py-4">
       <h3 class="text-5xl font-semibold text-gray-500 uppercase tracking-tight">
         {{ formatContentType(block.type) }}
       </h3>
