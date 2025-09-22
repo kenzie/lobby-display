@@ -4,7 +4,7 @@
     :class="sizeClasses[block.size]"
   >
     <div class="px-6 py-4">
-      <h3 class="text-4xl font-semibold text-gray-300 uppercase tracking-wide">
+      <h3 class="text-5xl font-semibold text-gray-500 uppercase tracking-tight">
         {{ formatContentType(block.type) }}
       </h3>
     </div>
