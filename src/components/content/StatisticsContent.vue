@@ -1,5 +1,5 @@
 <template>
-  <div class="text-slate-100" style="padding: 8px 16px;">
+  <div class="text-slate-100 py-1 px-4">
     <div v-if="size === 'small'" class="flex flex-col justify-center">
       <div class="text-xs font-medium text-slate-300 mb-1">Top Scorer</div>
       <div class="text-xs font-semibold text-white">{{ data.topScorer.name }}</div>

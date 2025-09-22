@@ -1,5 +1,5 @@
 <template>
-  <div class="text-slate-100 h-full" style="padding: 8px 16px;">
+  <div class="text-slate-100 h-full py-1 px-4">
     <!-- Small: 1 sponsor -->
     <div v-if="size === 'small'" class="flex items-center justify-center h-full">
       <div class="text-center">

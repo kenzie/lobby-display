@@ -1,5 +1,5 @@
 <template>
-  <div class="text-slate-100" style="padding: 8px 16px;">
+  <div class="text-slate-100 py-1 px-4">
     <div v-if="size === 'small'" class="flex items-center justify-center">
       <div class="text-center">
         <div class="text-xs font-semibold text-white">{{ data.headline }}</div>

@@ -1,5 +1,5 @@
 <template>
-  <div class="text-slate-100" style="padding: 8px 16px;">
+  <div class="text-slate-100 py-1 px-4">
     <div v-if="size === 'small'" class="flex flex-col justify-center text-center">
       <div class="text-xs font-semibold text-white mb-1">{{ data.photo.caption }}</div>
       <div class="text-xs text-blue-400">{{ data.photo.year }}</div>

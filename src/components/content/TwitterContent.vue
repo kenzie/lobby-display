@@ -1,5 +1,5 @@
 <template>
-  <div class="text-slate-100" style="padding: 8px 16px;">
+  <div class="text-slate-100 py-1 px-4">
     <div v-if="size === 'small'" class="flex flex-col justify-center">
       <div class="text-xs font-medium text-slate-300 mb-1">Latest Tweet</div>
       <div class="text-xs text-blue-400 mb-1">@{{ data.latestTweet.handle }}</div>

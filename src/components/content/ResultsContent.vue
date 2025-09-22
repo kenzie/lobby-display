@@ -1,11 +1,11 @@
 <template>
-  <div class="text-slate-100" style="padding: 8px 16px;">
+  <div class="text-slate-100 py-1 px-4">
     <div v-if="size === 'small'" class="flex flex-col justify-center">
       <div class="text-xs font-medium text-slate-300 mb-1">Last Game</div>
       <div class="text-xs font-semibold text-white">{{ data.lastGame.result }} vs {{ data.lastGame.opponent }}</div>
     </div>
     <div v-else-if="size === 'medium'" class="space-y-3">
-      <div class="text-xs font-semibold text-white mb-2">Recent Results</div>
+      <div class="text-xs font-semibold text-white mb-3">Recent Results</div>
       <div v-for="game in data.recentGames.slice(0, 3)" :key="game.id" class="bg-slate-700/30 rounded-md p-3">
         <div class="flex justify-between items-center">
           <div>
@@ -17,7 +17,7 @@
       </div>
     </div>
     <div v-else class="space-y-2">
-      <div class="text-xs font-bold text-white mb-3">Season Results</div>
+      <div class="text-xs font-bold text-white mb-2">Season Results</div>
       <div v-for="game in data.recentGames" :key="game.id" class="bg-slate-700/20 rounded-md p-3">
         <div class="flex justify-between items-center">
           <div>
