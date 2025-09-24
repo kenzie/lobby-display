@@ -4,10 +4,9 @@
       <div class="text-xs font-medium text-slate-300 mb-1">Last Game</div>
       <div class="text-xs font-semibold text-white">{{ data.lastGame.result }} vs {{ data.lastGame.opponent }}</div>
     </div>
-    <div v-else-if="size === 'medium'" class="space-y-3">
-      <div class="text-xs font-semibold text-white mb-3">Recent Results</div>
-      <div v-for="game in data.recentGames.slice(0, 3)" :key="game.id" class="bg-slate-700/30 rounded-md p-3">
-        <div class="flex justify-between items-center">
+    <div v-else-if="size === 'medium'" class="flex flex-col h-full gap-4 pb-4">
+      <div v-for="game in data.recentGames.slice(0, 4)" :key="game.id" class="bg-slate-700/30 rounded-md p-3 flex-1 flex items-center">
+        <div class="flex justify-between items-center w-full">
           <div>
             <div class="font-semibold text-white">{{ game.result }} vs {{ game.opponent }}</div>
             <div class="text-xs text-slate-300">{{ game.date }}</div>

@@ -44,7 +44,7 @@ const sizeClasses = {
 const formatContentType = (type: string) => {
   switch (type) {
     case 'twitter': return 'Social Media'
-    case 'profiles': return 'Player Profile'
+    case 'profiles': return 'Player Profiles'
     case 'facts': return 'Did You Know'
     case 'videos': return 'Video Highlights'
     default: return type

@@ -33,14 +33,15 @@ const isSliding = ref(false)
 
 let slideInterval: number
 
-const initializeColumns = () => {
+const initializeColumns = async () => {
   // Create 4 columns (3 visible + 1 offscreen right)
   for (let i = 0; i < 4; i++) {
-    visibleColumns.value.push(generateRandomColumn())
+    const column = await generateRandomColumn()
+    visibleColumns.value.push(column)
   }
 }
 
-const slideColumns = () => {
+const slideColumns = async () => {
   if (isSliding.value || !slideContainer.value) return
   
   isSliding.value = true
@@ -49,7 +50,7 @@ const slideColumns = () => {
   const animationStart = performance.now()
   
   // Use CSS animation instead of JavaScript transforms
-  slideContainer.value.addEventListener('animationend', () => {
+  slideContainer.value.addEventListener('animationend', async () => {
     const animationDuration = performance.now() - animationStart
     if (animationDuration > 1100) { // Should be ~1000ms
       console.warn(`Animation took ${animationDuration.toFixed(2)}ms (expected ~1000ms)`)
@@ -57,13 +58,14 @@ const slideColumns = () => {
     
     // Remove first column and add new one at the end
     visibleColumns.value.shift()
-    visibleColumns.value.push(generateRandomColumn())
+    const newColumn = await generateRandomColumn()
+    visibleColumns.value.push(newColumn)
     isSliding.value = false
   }, { once: true })
 }
 
-onMounted(() => {
-  initializeColumns()
+onMounted(async () => {
+  await initializeColumns()
   
   // Environment-specific timing
   const isDev = import.meta.env.DEV

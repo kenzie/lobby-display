@@ -1,8 +1,8 @@
 <template>
   <div class="text-white">
     <!-- Small: Next game matchup -->
-    <div v-if="size === 'small'" class="px-6 py-8">
-      <div class="flex items-center justify-between">
+    <div v-if="size === 'small'" class="px-6 pt-4 pb-8">
+      <div class="flex items-center justify-between w-full">
         <!-- Home Team -->
         <div class="flex flex-col items-center">
           <div class="w-16 h-16 rounded-full mb-3 flex items-center justify-center" 
@@ -10,7 +10,6 @@
             <span class="text-white font-bold text-xs">{{ data.homeTeam?.abbr || 'CBW' }}</span>
           </div>
           <div class="text-xs font-medium text-white">{{ data.homeTeam?.abbr || 'CBW' }}</div>
-          <div class="text-xs text-gray-400 mt-1">{{ data.homeTeam?.record || '22-8' }}</div>
         </div>
         
         <!-- Center - Time/Score -->
@@ -26,7 +25,6 @@
             <span class="text-white font-bold text-xs">{{ getOpponentAbbr(data.upcomingGames[0].opponent) }}</span>
           </div>
           <div class="text-xs font-medium text-white">{{ getOpponentAbbr(data.upcomingGames[0].opponent) }}</div>
-          <div class="text-xs text-gray-400 mt-1">{{ data.upcomingGames[0].opponent?.record || '0-0' }}</div>
         </div>
       </div>
     </div>

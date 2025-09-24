@@ -1,4 +1,5 @@
 import { dummyData } from '@/data/dummyData'
+import { dataService } from '@/services/dataService'
 import type { ContentBlock, ContentType, ContentSize, Column } from '@/types'
 
 const contentTypes: ContentType[] = [
@@ -29,17 +30,60 @@ function getRandomSize(): ContentSize {
   return contentSizes[Math.floor(Math.random() * contentSizes.length)]
 }
 
-function createContentBlock(): ContentBlock {
-  const type = getRandomContentType()
-  const size = getRandomSize()
-  
-  visibleContentTypes.add(type)
-  
-  return {
-    id: `${type}-${size}-${Date.now()}-${Math.random()}`,
-    type,
-    size,
-    data: dummyData[type][size]
+async function createContentBlock(): Promise<ContentBlock> {
+  try {
+    const type = getRandomContentType()
+    const size = getRandomSize()
+    
+    visibleContentTypes.add(type)
+    
+    let data
+    try {
+      if (type === 'profiles') {
+        console.log(`Fetching roster data for ${type}:${size}`)
+        const rosterData = await dataService.getRosterData()
+        data = rosterData[size]
+        console.log(`Roster data fetched:`, data)
+        
+        // Ensure data is not undefined
+        if (!data) {
+          console.warn(`No ${size} data found in roster, using dummy data`)
+          data = dummyData[type][size]
+        }
+      } else {
+        data = dummyData[type][size]
+      }
+    } catch (error) {
+      console.error(`Error fetching data for ${type}:`, error)
+      // Fallback to dummy data
+      data = dummyData[type][size]
+      console.log(`Using fallback data for ${type}:${size}`)
+    }
+    
+    // Final safety check
+    if (!data) {
+      console.error(`No data available for ${type}:${size}, using fallback`)
+      data = dummyData.facts.small // Safe fallback
+    }
+    
+    const block = {
+      id: `${type}-${size}-${Date.now()}-${Math.random()}`,
+      type,
+      size,
+      data
+    }
+    
+    console.log(`Created content block:`, block)
+    return block
+  } catch (error) {
+    console.error('Error creating content block:', error)
+    // Return a safe fallback block
+    return {
+      id: `fallback-${Date.now()}-${Math.random()}`,
+      type: 'facts',
+      size: 'small',
+      data: dummyData.facts.small
+    }
   }
 }
 
@@ -51,35 +95,79 @@ function getHeightForSize(size: ContentSize): number {
   }
 }
 
-export function generateRandomColumn(): Column {
-  const blocks: ContentBlock[] = []
-  let totalHeight = 0
-  const maxHeight = 3 // 3 rows per column
-  
-  while (totalHeight < maxHeight) {
-    const remainingHeight = maxHeight - totalHeight
+export async function generateRandomColumn(): Promise<Column> {
+  try {
+    console.log('Generating new column...')
+    const blocks: ContentBlock[] = []
+    let totalHeight = 0
+    const maxHeight = 3 // 3 rows per column
     
-    // Choose a size that fits
-    let availableSizes: ContentSize[]
-    if (remainingHeight >= 3) {
-      availableSizes = ['small', 'medium', 'large']
-    } else if (remainingHeight >= 2) {
-      availableSizes = ['small', 'medium']
-    } else {
-      availableSizes = ['small']
+    while (totalHeight < maxHeight) {
+      const remainingHeight = maxHeight - totalHeight
+      
+      // Choose a size that fits
+      let availableSizes: ContentSize[]
+      if (remainingHeight >= 3) {
+        availableSizes = ['small', 'medium', 'large']
+      } else if (remainingHeight >= 2) {
+        availableSizes = ['small', 'medium']
+      } else {
+        availableSizes = ['small']
+      }
+      
+      const size = availableSizes[Math.floor(Math.random() * availableSizes.length)]
+      const block = await createContentBlock()
+      block.size = size // Override with our calculated size
+      
+      // Refetch data with correct size
+      try {
+        if (block.type === 'profiles') {
+          const rosterData = await dataService.getRosterData()
+          block.data = rosterData[size]
+          
+          // Ensure data is not undefined
+          if (!block.data) {
+            console.warn(`No ${size} data found in roster for size override, using dummy data`)
+            block.data = dummyData[block.type][size]
+          }
+        } else {
+          block.data = dummyData[block.type][size]
+        }
+      } catch (error) {
+        console.error(`Error fetching data for ${block.type}:`, error)
+        block.data = dummyData[block.type][size]
+      }
+      
+      // Final safety check for size override
+      if (!block.data) {
+        console.error(`No data available for ${block.type}:${size} in size override, using fallback`)
+        block.data = dummyData.facts.small
+      }
+      
+      blocks.push(block)
+      totalHeight += getHeightForSize(size)
     }
     
-    const size = availableSizes[Math.floor(Math.random() * availableSizes.length)]
-    const block = createContentBlock()
-    block.size = size // Override with our calculated size
-    block.data = dummyData[block.type][size]
+    const column = {
+      id: `column-${Date.now()}-${Math.random()}`,
+      blocks
+    }
     
-    blocks.push(block)
-    totalHeight += getHeightForSize(size)
-  }
-  
-  return {
-    id: `column-${Date.now()}-${Math.random()}`,
-    blocks
+    console.log('Generated column:', column)
+    return column
+  } catch (error) {
+    console.error('Error generating column:', error)
+    // Return a safe fallback column
+    return {
+      id: `fallback-column-${Date.now()}`,
+      blocks: [
+        {
+          id: `fallback-block-${Date.now()}`,
+          type: 'facts',
+          size: 'large',
+          data: dummyData.facts.large
+        }
+      ]
+    }
   }
 }

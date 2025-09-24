@@ -8,7 +8,7 @@
     </div>
     
     <!-- Medium: 3 sponsors -->
-    <div v-else-if="size === 'medium'" class="flex flex-col gap-3 h-full">
+    <div v-else-if="size === 'medium'" class="flex flex-col gap-4 h-full pb-4">
       <div v-for="sponsor in getSponsors(3)" 
            :key="sponsor.name" 
            class="bg-slate-700/30 rounded-md p-4 text-center flex-1 flex flex-col justify-center">
@@ -18,7 +18,7 @@
     </div>
     
     <!-- Large: 4-5 sponsors -->
-    <div v-else class="flex flex-col gap-2 h-full">
+    <div v-else class="flex flex-col gap-4 h-full pb-4">
       <div v-for="sponsor in getSponsors(5)" 
            :key="sponsor.name" 
            class="bg-slate-700/20 rounded-md p-3 text-center flex-1 flex flex-col justify-center">
