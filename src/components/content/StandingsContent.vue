@@ -17,7 +17,7 @@
             {{ index + 1 }}
           </span>
           <span class="font-medium text-white" 
-                :class="team.name === 'Cape Breton West' ? 'text-blue-400' : ''">
+                :class="team.name === 'Islanders' ? 'text-blue-400' : ''">
             {{ team.name }}
           </span>
         </div>
@@ -38,7 +38,7 @@
             {{ index + 1 }}
           </span>
           <span class="text-xs font-medium" 
-                :class="team.name === 'Cape Breton West' ? 'text-blue-400' : 'text-white'">
+                :class="team.name === 'Islanders' ? 'text-blue-400' : 'text-white'">
             {{ team.name }}
           </span>
         </div>

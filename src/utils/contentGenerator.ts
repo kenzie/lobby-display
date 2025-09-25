@@ -50,6 +50,50 @@ async function createContentBlock(): Promise<ContentBlock> {
           console.warn(`No ${size} data found in roster, using dummy data`)
           data = dummyData[type][size]
         }
+      } else if (type === 'schedule') {
+        console.log(`Fetching schedule data for ${type}:${size}`)
+        const scheduleData = await dataService.getScheduleData()
+        data = scheduleData[size]
+        console.log(`Schedule data fetched:`, data)
+        
+        // Ensure data is not undefined
+        if (!data) {
+          console.warn(`No ${size} data found in schedule, using dummy data`)
+          data = dummyData[type][size]
+        }
+      } else if (type === 'statistics') {
+        console.log(`Fetching statistics data for ${type}:${size}`)
+        const statisticsData = await dataService.getStatisticsData()
+        data = statisticsData[size]
+        console.log(`Statistics data fetched:`, data)
+        
+        // Ensure data is not undefined
+        if (!data) {
+          console.warn(`No ${size} data found in statistics, using dummy data`)
+          data = dummyData[type][size]
+        }
+      } else if (type === 'results') {
+        console.log(`Fetching results data for ${type}:${size}`)
+        const resultsData = await dataService.getResultsData()
+        data = resultsData[size]
+        console.log(`Results data fetched:`, data)
+        
+        // Ensure data is not undefined
+        if (!data) {
+          console.warn(`No ${size} data found in results, using dummy data`)
+          data = dummyData[type][size]
+        }
+      } else if (type === 'standings') {
+        console.log(`Fetching standings data for ${type}:${size}`)
+        const standingsData = await dataService.getStandingsData()
+        data = standingsData[size]
+        console.log(`Standings data fetched:`, data)
+        
+        // Ensure data is not undefined
+        if (!data) {
+          console.warn(`No ${size} data found in standings, using dummy data`)
+          data = dummyData[type][size]
+        }
       } else {
         data = dummyData[type][size]
       }
@@ -128,6 +172,42 @@ export async function generateRandomColumn(): Promise<Column> {
           // Ensure data is not undefined
           if (!block.data) {
             console.warn(`No ${size} data found in roster for size override, using dummy data`)
+            block.data = dummyData[block.type][size]
+          }
+        } else if (block.type === 'schedule') {
+          const scheduleData = await dataService.getScheduleData()
+          block.data = scheduleData[size]
+          
+          // Ensure data is not undefined
+          if (!block.data) {
+            console.warn(`No ${size} data found in schedule for size override, using dummy data`)
+            block.data = dummyData[block.type][size]
+          }
+        } else if (block.type === 'statistics') {
+          const statisticsData = await dataService.getStatisticsData()
+          block.data = statisticsData[size]
+          
+          // Ensure data is not undefined
+          if (!block.data) {
+            console.warn(`No ${size} data found in statistics for size override, using dummy data`)
+            block.data = dummyData[block.type][size]
+          }
+        } else if (block.type === 'results') {
+          const resultsData = await dataService.getResultsData()
+          block.data = resultsData[size]
+          
+          // Ensure data is not undefined
+          if (!block.data) {
+            console.warn(`No ${size} data found in results for size override, using dummy data`)
+            block.data = dummyData[block.type][size]
+          }
+        } else if (block.type === 'standings') {
+          const standingsData = await dataService.getStandingsData()
+          block.data = standingsData[size]
+          
+          // Ensure data is not undefined
+          if (!block.data) {
+            console.warn(`No ${size} data found in standings for size override, using dummy data`)
             block.data = dummyData[block.type][size]
           }
         } else {

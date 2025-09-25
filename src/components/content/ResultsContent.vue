@@ -15,10 +15,9 @@
         </div>
       </div>
     </div>
-    <div v-else class="space-y-2">
-      <div class="text-xs font-bold text-white mb-2">Season Results</div>
-      <div v-for="game in data.recentGames" :key="game.id" class="bg-slate-700/20 rounded-md p-3">
-        <div class="flex justify-between items-center">
+    <div v-else class="flex flex-col h-full gap-4 pb-4">
+      <div v-for="game in data.recentGames" :key="game.id" class="bg-slate-700/20 rounded-md p-3 flex-1 flex items-center">
+        <div class="flex justify-between items-center w-full">
           <div>
             <div class="font-semibold text-white">{{ game.date }} vs {{ game.opponent }}</div>
             <div class="text-xs text-slate-400">{{ game.location }}</div>
