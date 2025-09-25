@@ -379,7 +379,6 @@ class DataService {
 
   private transformStatisticsData(statsData: any): StatisticsData {
     const playerStats = statsData.stats || []
-    const goalieStats = statsData.statsG || []
     
     // Get top players
     const topScorer = playerStats[0]
@@ -490,7 +489,7 @@ class DataService {
     const transformedStandings = standings.map(transformTeam)
     
     // Find Cape Breton West position
-    const capeBretonIndex = transformedStandings.findIndex(team => team.name === 'Islanders')
+    const capeBretonIndex = transformedStandings.findIndex((team: any) => team.name === 'Islanders')
     const capeBretonTeam = transformedStandings[capeBretonIndex]
 
     return {
