@@ -3,12 +3,15 @@
     <div
       ref="slideContainer"
       class="flex columns-container"
-      :class="{ 'sliding': isSliding }"
     >
       <div
-        v-for="column in visibleColumns"
+        v-for="(column, index) in visibleColumns"
         :key="column.id"
         class="flex-shrink-0 flex flex-col column"
+        :class="{ 
+          'sliding-column': isSliding && index > 0, 
+          'static-column': isSliding && index === 0
+        }"
         :style="{ width: `${100 / 3}vw`, padding: '32px 16px', gap: '32px' }"
       >
         <ContentBlock
@@ -49,19 +52,27 @@ const slideColumns = async () => {
   // Performance monitoring for Linux debugging
   const animationStart = performance.now()
   
-  // Use CSS animation instead of JavaScript transforms
-  slideContainer.value.addEventListener('animationend', async () => {
-    const animationDuration = performance.now() - animationStart
-    if (animationDuration > 1100) { // Should be ~1000ms
-      console.warn(`Animation took ${animationDuration.toFixed(2)}ms (expected ~1000ms)`)
+  // Listen for animation end on any sliding column (columns 2, 3, 4)
+  const handleAnimationEnd = async (event: AnimationEvent) => {
+    // Only handle the slideColumnLeft animation and only once
+    if (event.animationName === 'slideColumnLeft') {
+      const animationDuration = performance.now() - animationStart
+      if (animationDuration > 1100) { // Should be ~1000ms
+        console.warn(`Animation took ${animationDuration.toFixed(2)}ms (expected ~1000ms)`)
+      }
+      
+      // Remove event listener to prevent multiple triggers
+      slideContainer.value?.removeEventListener('animationend', handleAnimationEnd)
+      
+      // Remove first column and add new one at the end
+      visibleColumns.value.shift()
+      const newColumn = await generateRandomColumn()
+      visibleColumns.value.push(newColumn)
+      isSliding.value = false
     }
-    
-    // Remove first column and add new one at the end
-    visibleColumns.value.shift()
-    const newColumn = await generateRandomColumn()
-    visibleColumns.value.push(newColumn)
-    isSliding.value = false
-  }, { once: true })
+  }
+  
+  slideContainer.value.addEventListener('animationend', handleAnimationEnd)
 }
 
 onMounted(async () => {
@@ -102,15 +113,34 @@ onUnmounted(() => {
   isolation: isolate;
 }
 
-.columns-container.sliding {
-  animation: slideLeft 1000ms cubic-bezier(0.23, 1, 0.32, 1) forwards;
-}
+/* Container no longer has sliding animation */
 
 .column {
   transform: translate3d(0, 0, 0);
   backface-visibility: hidden;
   contain: layout style paint;
   will-change: transform;
+  position: relative;
+}
+
+.static-column {
+  /* First column stays in place */
+  z-index: 1;
+}
+
+.sliding-column {
+  /* Sliding columns move left and have higher z-index to cover the static column */
+  z-index: 2;
+  animation: slideColumnLeft 1000ms cubic-bezier(0.23, 1, 0.32, 1) forwards;
+}
+
+@keyframes slideColumnLeft {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  100% {
+    transform: translate3d(-33.333333vw, 0, 0);
+  }
 }
 
 @keyframes slideLeft {
@@ -132,7 +162,7 @@ onUnmounted(() => {
 
 /* Fallback for low-performance systems */
 @media (prefers-reduced-motion: reduce) {
-  .columns-container.sliding {
+  .sliding-column {
     animation: slideLeftSimple 800ms ease-out forwards;
   }
   
@@ -144,7 +174,7 @@ onUnmounted(() => {
 }
 
 /* Detect potential Linux performance issues */
-.columns-container.sliding {
+.sliding-column {
   /* Ensure consistent frame timing */
   animation-fill-mode: both;
   animation-timing-function: cubic-bezier(0.23, 1, 0.32, 1);
