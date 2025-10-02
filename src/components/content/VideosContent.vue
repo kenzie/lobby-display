@@ -60,7 +60,7 @@
 </template>
 
 <script setup lang="ts">
-import { computed, ref, onBeforeUnmount } from 'vue'
+import { ref, onBeforeUnmount } from 'vue'
 
 defineProps<{
   size: 'small' | 'medium' | 'large'
@@ -69,11 +69,10 @@ defineProps<{
 
 const videoRef = ref<HTMLVideoElement | null>(null)
 
-const videoSrc = computed(() => {
-  const videos = ['al_macinnis.mov', 'andrew_macdonald.mp4', 'telus-cup.mp4']
-  const randomVideo = videos[Math.floor(Math.random() * videos.length)]
-  return `/assets/videos/${randomVideo}`
-})
+// Select video once on component creation, not on every render
+const videos = ['al_macinnis.mov', 'andrew_macdonald.mp4', 'telus-cup.mp4']
+const randomVideo = videos[Math.floor(Math.random() * videos.length)]
+const videoSrc = `/assets/videos/${randomVideo}`
 
 onBeforeUnmount(() => {
   // Pause and clean up video before component is destroyed
