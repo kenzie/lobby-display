@@ -1,25 +1,29 @@
 <template>
   <div v-if="size === 'small'" class="w-full h-full">
-    <video 
+    <video
+      ref="videoRef"
       class="w-full h-full"
-      :src="videoSrc" 
-      muted 
-      autoplay 
+      :src="videoSrc"
+      muted
+      autoplay
       loop
-      style="object-fit: cover; object-position: top; display: block;">
+      playsinline
+      style="object-fit: cover; object-position: top; display: block; will-change: transform; transform: translate3d(0, 0, 0);">
     </video>
   </div>
-  
+
   <div v-else class="text-slate-100" style="padding: 8px 0;">
     <div v-if="size === 'medium'" class="flex flex-col h-full">
       <div class="w-full flex-1" style="overflow: hidden; margin-bottom: 16px;">
-        <video 
+        <video
+          ref="videoRef"
           class="w-full h-full"
-          :src="videoSrc" 
-          muted 
-          autoplay 
+          :src="videoSrc"
+          muted
+          autoplay
           loop
-          style="object-fit: cover; display: block;">
+          playsinline
+          style="object-fit: cover; display: block; will-change: transform; transform: translate3d(0, 0, 0);">
         </video>
       </div>
       <div style="padding: 0 16px; margin-bottom: 12px;">
@@ -30,13 +34,15 @@
 
     <div v-else class="flex flex-col h-full">
       <div class="w-full flex-1" style="overflow: hidden; margin-bottom: 16px;">
-        <video 
+        <video
+          ref="videoRef"
           class="w-full h-full"
-          :src="videoSrc" 
-          muted 
-          autoplay 
+          :src="videoSrc"
+          muted
+          autoplay
           loop
-          style="object-fit: cover; display: block;">
+          playsinline
+          style="object-fit: cover; display: block; will-change: transform; transform: translate3d(0, 0, 0);">
         </video>
       </div>
       <div style="padding: 0 16px; margin-bottom: 12px;">
@@ -54,16 +60,27 @@
 </template>
 
 <script setup lang="ts">
-import { computed } from 'vue'
+import { computed, ref, onBeforeUnmount } from 'vue'
 
 defineProps<{
   size: 'small' | 'medium' | 'large'
   data: any
 }>()
 
+const videoRef = ref<HTMLVideoElement | null>(null)
+
 const videoSrc = computed(() => {
   const videos = ['al_macinnis.mov', 'andrew_macdonald.mp4', 'telus-cup.mp4']
   const randomVideo = videos[Math.floor(Math.random() * videos.length)]
   return `/assets/videos/${randomVideo}`
+})
+
+onBeforeUnmount(() => {
+  // Pause and clean up video before component is destroyed
+  if (videoRef.value) {
+    videoRef.value.pause()
+    videoRef.value.src = ''
+    videoRef.value.load()
+  }
 })
 </script>

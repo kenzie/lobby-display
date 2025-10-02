@@ -67,6 +67,9 @@ const slideColumns = async () => {
       // Remove event listener to prevent multiple triggers
       slideContainer.value?.removeEventListener('animationend', handleAnimationEnd)
 
+      // Small delay to ensure compositor layers have settled
+      await new Promise(resolve => setTimeout(resolve, 50))
+
       // Remove first column and add new one at the end
       visibleColumns.value.shift()
       const newColumn = await generateRandomColumn()
