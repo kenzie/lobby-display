@@ -8,11 +8,12 @@
         v-for="(column, index) in visibleColumns"
         :key="column.id"
         class="flex-shrink-0 flex flex-col column"
-        :class="{ 
-          'sliding-column': isSliding && index > 0, 
+        :class="{
+          'sliding-column': isSliding && index > 0,
           'static-column': isSliding && index === 0
         }"
         :style="{ width: `${100 / 3}vw`, padding: '32px 16px', gap: '32px' }"
+        :data-animation-key="animationKey"
       >
         <ContentBlock
           v-for="block in column.blocks"
@@ -33,6 +34,7 @@ import type { Column } from './types'
 const visibleColumns = ref<Column[]>([])
 const slideContainer = ref<HTMLElement>()
 const isSliding = ref(false)
+const animationKey = ref(0)
 
 let slideInterval: number
 
@@ -46,32 +48,37 @@ const initializeColumns = async () => {
 
 const slideColumns = async () => {
   if (isSliding.value || !slideContainer.value) return
-  
+
   isSliding.value = true
-  
+  animationKey.value++ // Increment to force animation retrigger
+
   // Performance monitoring for Linux debugging
   const animationStart = performance.now()
-  
+
   // Listen for animation end on any sliding column (columns 2, 3, 4)
   const handleAnimationEnd = async (event: AnimationEvent) => {
-    // Only handle the slideColumnLeft animation and only once
-    if (event.animationName === 'slideColumnLeft') {
+    // Only handle the slideColumnLeft animation and only once (handle scoped animation names)
+    if (event.animationName.startsWith('slideColumnLeft')) {
       const animationDuration = performance.now() - animationStart
       if (animationDuration > 1100) { // Should be ~1000ms
         console.warn(`Animation took ${animationDuration.toFixed(2)}ms (expected ~1000ms)`)
       }
-      
+
       // Remove event listener to prevent multiple triggers
       slideContainer.value?.removeEventListener('animationend', handleAnimationEnd)
-      
+
       // Remove first column and add new one at the end
       visibleColumns.value.shift()
       const newColumn = await generateRandomColumn()
       visibleColumns.value.push(newColumn)
-      isSliding.value = false
+
+      // Use requestAnimationFrame to ensure DOM updates before next animation
+      requestAnimationFrame(() => {
+        isSliding.value = false
+      })
     }
   }
-  
+
   slideContainer.value.addEventListener('animationend', handleAnimationEnd)
 }
 
@@ -116,22 +123,35 @@ onUnmounted(() => {
 /* Container no longer has sliding animation */
 
 .column {
-  transform: translate3d(0, 0, 0);
   backface-visibility: hidden;
   contain: layout style paint;
   will-change: transform;
   position: relative;
+  /* Reset transform when not animating */
+  transform: translate3d(0, 0, 0);
+  transition: none;
 }
 
 .static-column {
-  /* First column stays in place */
+  /* First column stays in place and fades out */
   z-index: 1;
+  transform: translate3d(0, 0, 0);
+  animation: fadeOut 1000ms cubic-bezier(0.23, 1, 0.32, 1) forwards;
 }
 
 .sliding-column {
   /* Sliding columns move left and have higher z-index to cover the static column */
   z-index: 2;
   animation: slideColumnLeft 1000ms cubic-bezier(0.23, 1, 0.32, 1) forwards;
+}
+
+@keyframes fadeOut {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
 }
 
 @keyframes slideColumnLeft {
