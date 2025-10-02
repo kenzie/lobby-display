@@ -1,19 +1,18 @@
 <template>
-  <div class="w-screen h-screen bg-slate-900 overflow-hidden flex">
+  <div class="w-screen h-screen bg-slate-900 overflow-hidden">
     <div
-      ref="slideContainer"
       class="flex columns-container"
+      :class="{ 'is-sliding': isSliding }"
     >
       <div
-        v-for="(column, index) in visibleColumns"
-        :key="column.id"
+        v-for="(column, index) in columns"
+        :key="`${column.id}-${animationCycle}`"
         class="flex-shrink-0 flex flex-col column"
         :class="{
-          'sliding-column': isSliding && index > 0,
-          'static-column': isSliding && index === 0
+          'column-static': isSliding && index === 0,
+          'column-sliding': isSliding && index > 0
         }"
-        :style="{ width: `${100 / 3}vw`, padding: '32px 16px', gap: '32px' }"
-        :data-animation-key="animationKey"
+        :style="{ width: `${100 / 3}vw`, height: '100vh', padding: '32px 16px', gap: '32px' }"
       >
         <ContentBlock
           v-for="block in column.blocks"
@@ -26,72 +25,61 @@
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted, onUnmounted } from 'vue'
+import { ref, onMounted, onUnmounted, nextTick } from 'vue'
 import ContentBlock from './components/ContentBlock.vue'
 import { generateRandomColumn } from './utils/contentGenerator'
 import type { Column } from './types'
 
-const visibleColumns = ref<Column[]>([])
-const slideContainer = ref<HTMLElement>()
+const columns = ref<Column[]>([])
 const isSliding = ref(false)
-const animationKey = ref(0)
+const animationCycle = ref(0)
 
 let slideInterval: number
 
 const initializeColumns = async () => {
-  // Create 4 columns (3 visible + 1 offscreen right)
+  // Create 4 columns (3 visible on screen + 1 off-screen to the right)
   for (let i = 0; i < 4; i++) {
     const column = await generateRandomColumn()
-    visibleColumns.value.push(column)
+    columns.value.push(column)
   }
 }
 
 const slideColumns = async () => {
-  if (isSliding.value || !slideContainer.value) return
+  if (isSliding.value) return
 
+  // Generate the new column before starting animation to prevent flash
+  const newColumn = await generateRandomColumn()
+
+  // Set sliding state to true, triggering the animation via CSS classes
   isSliding.value = true
-  animationKey.value++ // Increment to force animation retrigger
 
-  // Performance monitoring for Linux debugging
-  const animationStart = performance.now()
+  // Ensure Vue has applied the classes before we continue
+  await nextTick()
 
-  // Listen for animation end on any sliding column (columns 2, 3, 4)
-  const handleAnimationEnd = async (event: AnimationEvent) => {
-    // Only handle the slideColumnLeft animation and only once (handle scoped animation names)
-    if (event.animationName.startsWith('slideColumnLeft')) {
-      const animationDuration = performance.now() - animationStart
-      if (animationDuration > 1100) { // Should be ~1000ms
-        console.warn(`Animation took ${animationDuration.toFixed(2)}ms (expected ~1000ms)`)
-      }
+  // Wait for the animation to complete (1000ms)
+  await new Promise(resolve => setTimeout(resolve, 1000))
 
-      // Remove event listener to prevent multiple triggers
-      slideContainer.value?.removeEventListener('animationend', handleAnimationEnd)
+  // Update the columns array
+  columns.value.shift()
+  columns.value.push(newColumn)
 
-      // Small delay to ensure compositor layers have settled
-      await new Promise(resolve => setTimeout(resolve, 50))
+  // Increment cycle counter to force new keys
+  animationCycle.value++
 
-      // Remove first column and add new one at the end
-      visibleColumns.value.shift()
-      const newColumn = await generateRandomColumn()
-      visibleColumns.value.push(newColumn)
+  // Reset sliding state
+  isSliding.value = false
 
-      // Use requestAnimationFrame to ensure DOM updates before next animation
-      requestAnimationFrame(() => {
-        isSliding.value = false
-      })
-    }
-  }
-
-  slideContainer.value.addEventListener('animationend', handleAnimationEnd)
+  // Wait for Vue to complete the render
+  await nextTick()
 }
 
 onMounted(async () => {
   await initializeColumns()
-  
+
   // Environment-specific timing
   const isDev = import.meta.env.DEV
   const isPreview = window.location.port === '4173'
-  
+
   let intervalTime: number
   if (isDev) {
     intervalTime = 0 // No animation in development
@@ -100,7 +88,7 @@ onMounted(async () => {
   } else {
     intervalTime = 30000 // 30 seconds for production
   }
-  
+
   if (intervalTime > 0) {
     slideInterval = setInterval(slideColumns, intervalTime)
   }
@@ -115,91 +103,37 @@ onUnmounted(() => {
 
 <style scoped>
 .columns-container {
-  will-change: transform;
-  transform: translate3d(0, 0, 0);
+  position: relative;
   backface-visibility: hidden;
-  contain: layout style paint;
-  transform-style: preserve-3d;
-  isolation: isolate;
+  transform: translate3d(0, 0, 0);
 }
-
-/* Container no longer has sliding animation */
 
 .column {
-  backface-visibility: hidden;
-  contain: layout style paint;
-  will-change: transform;
+  background-color: rgb(15 23 42); /* slate-900 to match page background and prevent gaps from showing through */
   position: relative;
-  /* Reset transform when not animating */
+  backface-visibility: hidden;
   transform: translate3d(0, 0, 0);
-  transition: none;
 }
 
-.static-column {
-  /* First column stays in place and fades out */
+.column-static {
+  /* First column stays in place during animation - covered by sliding columns */
+  transform: translate3d(0, 0, 0);
   z-index: 1;
-  transform: translate3d(0, 0, 0);
-  animation: fadeOut 1000ms cubic-bezier(0.23, 1, 0.32, 1) forwards;
 }
 
-.sliding-column {
-  /* Sliding columns move left and have higher z-index to cover the static column */
+.column-sliding {
+  /* Columns 2, 3, 4 slide left by one column width (33.333333vw) */
+  will-change: transform;
+  animation: slideLeft 1000ms ease-in-out forwards;
   z-index: 2;
-  animation: slideColumnLeft 1000ms cubic-bezier(0.23, 1, 0.32, 1) forwards;
-}
-
-@keyframes fadeOut {
-  0% {
-    opacity: 1;
-  }
-  100% {
-    opacity: 0;
-  }
-}
-
-@keyframes slideColumnLeft {
-  0% {
-    transform: translate3d(0, 0, 0);
-  }
-  100% {
-    transform: translate3d(-33.333333vw, 0, 0);
-  }
 }
 
 @keyframes slideLeft {
-  0% {
+  from {
     transform: translate3d(0, 0, 0);
   }
-  100% {
+  to {
     transform: translate3d(-33.333333vw, 0, 0);
   }
-}
-
-/* Linux-specific optimizations */
-@media (prefers-reduced-motion: no-preference) {
-  .columns-container {
-    /* Force hardware acceleration on Linux */
-    perspective: 1000px;
-  }
-}
-
-/* Fallback for low-performance systems */
-@media (prefers-reduced-motion: reduce) {
-  .sliding-column {
-    animation: slideLeftSimple 800ms ease-out forwards;
-  }
-  
-  @keyframes slideLeftSimple {
-    to {
-      transform: translateX(-33.333333vw);
-    }
-  }
-}
-
-/* Detect potential Linux performance issues */
-.sliding-column {
-  /* Ensure consistent frame timing */
-  animation-fill-mode: both;
-  animation-timing-function: cubic-bezier(0.23, 1, 0.32, 1);
 }
 </style>
