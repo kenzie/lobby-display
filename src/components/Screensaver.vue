@@ -56,7 +56,7 @@ onUnmounted(() => {
   left: 50%;
   transform: translate(-50%, -50%);
   text-align: center;
-  animation: floatTeam 8s ease-in-out infinite;
+  animation: repositionTeam 50s ease-out infinite;
 }
 
 .team-logo {
@@ -81,7 +81,8 @@ onUnmounted(() => {
   display: flex;
   align-items: center;
   gap: 20px;
-  animation: floatBottom 6s ease-in-out infinite;
+  animation: repositionBottom 50s ease-out infinite;
+  animation-delay: 0.2s;
 }
 
 .route19-logo {
@@ -94,13 +95,21 @@ onUnmounted(() => {
   font-weight: 400;
 }
 
-@keyframes floatTeam {
-  0%, 100% { transform: translate(-50%, -50%) translateX(-30px); }
-  50% { transform: translate(-50%, -50%) translateX(30px); }
+@keyframes repositionTeam {
+  0% { transform: translate(-50%, -50%) translateX(-150px); }
+  2% { transform: translate(-50%, -50%) translateX(150px); }
+  48% { transform: translate(-50%, -50%) translateX(150px); }
+  50% { transform: translate(-50%, -50%) translateX(-150px); }
+  98% { transform: translate(-50%, -50%) translateX(-150px); }
+  100% { transform: translate(-50%, -50%) translateX(-150px); }
 }
 
-@keyframes floatBottom {
-  0%, 100% { transform: translateX(-50%) translateX(-20px); }
-  50% { transform: translateX(-50%) translateX(20px); }
+@keyframes repositionBottom {
+  0% { transform: translateX(-50%) translateX(-150px); }
+  2% { transform: translateX(-50%) translateX(150px); }
+  48% { transform: translateX(-50%) translateX(150px); }
+  50% { transform: translateX(-50%) translateX(-150px); }
+  98% { transform: translateX(-50%) translateX(-150px); }
+  100% { transform: translateX(-50%) translateX(-150px); }
 }
 </style>
