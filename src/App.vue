@@ -1,5 +1,6 @@
 <template>
-  <div class="w-screen h-screen bg-slate-900 overflow-hidden">
+  <Screensaver v-if="showScreensaver" />
+  <div v-else class="w-screen h-screen bg-slate-900 overflow-hidden">
     <div
       class="flex columns-container"
       :class="{ 'is-sliding': isSliding }"
@@ -27,20 +28,38 @@
 <script setup lang="ts">
 import { ref, onMounted, onUnmounted, nextTick } from 'vue'
 import ContentBlock from './components/ContentBlock.vue'
+import Screensaver from './components/Screensaver.vue'
 import { generateRandomColumn } from './utils/contentGenerator'
 import type { Column } from './types'
+
+const SCREENSAVER_START = Number(import.meta.env.VITE_SCREENSAVER_START_HOUR) || 23
+const SCREENSAVER_END = Number(import.meta.env.VITE_SCREENSAVER_END_HOUR) || 7
 
 const columns = ref<Column[]>([])
 const isSliding = ref(false)
 const animationCycle = ref(0)
+const showScreensaver = ref(false)
 
-let slideInterval: number
+let slideInterval: number | undefined
+let checkInterval: number | undefined
 
 const initializeColumns = async () => {
   // Create 4 columns (3 visible on screen + 1 off-screen to the right)
   for (let i = 0; i < 4; i++) {
     const column = await generateRandomColumn()
     columns.value.push(column)
+  }
+}
+
+const checkTimeAndSwitch = () => {
+  const hour = new Date().getHours()
+  showScreensaver.value = hour >= SCREENSAVER_START || hour < SCREENSAVER_END
+}
+
+const handleKeyPress = (event: KeyboardEvent) => {
+  // Toggle screensaver with 's' key for testing
+  if (event.key === 's' || event.key === 'S') {
+    showScreensaver.value = !showScreensaver.value
   }
 }
 
@@ -74,20 +93,20 @@ const slideColumns = async () => {
 }
 
 onMounted(async () => {
+  // Check time and set up interval to check every minute
+  checkTimeAndSwitch()
+  checkInterval = setInterval(checkTimeAndSwitch, 60000)
+
+  // Add keyboard shortcut for testing
+  window.addEventListener('keydown', handleKeyPress)
+
   await initializeColumns()
 
   // Environment-specific timing
   const isDev = import.meta.env.DEV
-  const isPreview = window.location.port === '4173'
-
-  let intervalTime: number
-  if (isDev) {
-    intervalTime = 0 // No animation in development
-  } else if (isPreview) {
-    intervalTime = 5000 // 5 seconds for preview
-  } else {
-    intervalTime = 30000 // 30 seconds for production
-  }
+  const intervalTime = isDev
+    ? 0  // No animation in development
+    : Number(import.meta.env.VITE_SLIDE_INTERVAL) || 5000  // 5 seconds default, override with VITE_SLIDE_INTERVAL
 
   if (intervalTime > 0) {
     slideInterval = setInterval(slideColumns, intervalTime)
@@ -98,6 +117,10 @@ onUnmounted(() => {
   if (slideInterval) {
     clearInterval(slideInterval)
   }
+  if (checkInterval) {
+    clearInterval(checkInterval)
+  }
+  window.removeEventListener('keydown', handleKeyPress)
 })
 </script>
 
