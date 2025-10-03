@@ -5,9 +5,9 @@
   "main": "index.js",
   "scripts": {
     "dev": "vite",
-    "build": "vue-tsc && vite build",
-    "preview": "vite preview",
-    "kiosk": "npm run build && ./scripts/kiosk.sh"
+    "build": "VITE_SLIDE_INTERVAL=30000 vue-tsc && vite build",
+    "build:preview": "VITE_SLIDE_INTERVAL=5000 vue-tsc && vite build",
+    "preview": "npm run build:preview && vite preview"
   },
   "repository": {
     "type": "git",

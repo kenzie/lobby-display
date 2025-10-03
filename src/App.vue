@@ -104,9 +104,7 @@ onMounted(async () => {
 
   // Environment-specific timing
   const isDev = import.meta.env.DEV
-  const intervalTime = isDev
-    ? 0  // No animation in development
-    : Number(import.meta.env.VITE_SLIDE_INTERVAL) || 5000  // 5 seconds default, override with VITE_SLIDE_INTERVAL
+  const intervalTime = isDev ? 0 : Number(import.meta.env.VITE_SLIDE_INTERVAL) || 30000
 
   if (intervalTime > 0) {
     slideInterval = setInterval(slideColumns, intervalTime)
