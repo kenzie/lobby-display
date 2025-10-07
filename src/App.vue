@@ -7,7 +7,7 @@
     >
       <div
         v-for="(column, index) in columns"
-        :key="`${column.id}-${animationCycle}`"
+        :key="column.id"
         class="flex-shrink-0 flex flex-col column"
         :class="{
           'column-static': isSliding && index === 0,
@@ -37,7 +37,6 @@ const SCREENSAVER_END = Number(import.meta.env.VITE_SCREENSAVER_END_HOUR) || 7
 
 const columns = ref<Column[]>([])
 const isSliding = ref(false)
-const animationCycle = ref(0)
 const showScreensaver = ref(false)
 
 let slideInterval: number | undefined
@@ -81,9 +80,6 @@ const slideColumns = async () => {
   // Update the columns array
   columns.value.shift()
   columns.value.push(newColumn)
-
-  // Increment cycle counter to force new keys
-  animationCycle.value++
 
   // Reset sliding state
   isSliding.value = false
